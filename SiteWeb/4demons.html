@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- mobile convinient -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>4 Demons</title>
+  </head>
+  <body>
+    <!--Jumbotron-->
+    <div class="jumbotron jumbotron-fluid mb-0">
+      <div class="container">
+        <h1 class="display-4">IFT 3150 - Projet Informatique</h1>
+        <p class="lead">Jeu video de type Tower Defense : 4 Demons</p>
+        <p class="">Par Sami Steenhaut</p>
+        <p class="">Superviseur :
+          <a href="https://diro.umontreal.ca/repertoire-departement/vue/hafid-abdelhakim/" class="">Hafid Abdelhakim</a>
+        </p>
+      </div>
+    </div>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    <!--Énoncé du projet-->
+    <div class="container">
+      <div class="row">
+          <h3>Énoncé du projet</h3>
+      </div>
+      <div class="row">
+          <p>Le projet consiste à concevoir un jeu video de type Tower Defense avec certaine
+             touches de RPG(Role play game). Le jeu <strong>4 Demons</strong> est un jeu où
+             le joueur devra protéger son portail à l’aide de tours et tout cela sans que
+             son héro ne meurt. <br>
+             Le jeu sera développer via le moteur de jeu <strong>Unity (2D)</strong> avec le langage C# et il sera jouable sur PC et si le temps le permet adapté sur mobile Android.
+            </p>
+      </div>
+    </div>
+    <br>
+    <!--Description détaillée-->
+    <div class="container">
+      <div class="row">
+          <h3>Description détaillée</h3>
+      </div>
+      <div class="row">
+          <p>
+          Un <strong>Tower Defense</strong> est un jeu où les ennemis apparaissent (spawn) sur un point de départ et suivent un chemin pour se rendre à un point d'arrivé. Le but du joueur est de protéger le point d'arrivé en posant des tours de défense sur les côtés du chemin, qui elles attaqueront les ennemies. Un <strong>Role Play Game (RPG)</strong> est un type de jeu où le joueur incarne un personnage et le fait avancer au fil de son aventure en obtenant des objets, de la monnaie (pas nécessairement de l'argent) et l'expériences. <strong>4 Demons</strong> propose un mixe de ces deux types de jeu. Le joueur incarnera un des 4 commandants de la race des démons et devra protéger le portail (le point d'arrivée des ennemis). Pour le protéger, il aura plusieurs options : Poser des tours, son personnage est sur le chemin des ennemis ce qui lui permettra de les attaquer de front avec diverses attaques et il pourra aussi embaucher des mercenaires (AI) qui l'accompagneront sur le chemin pour se battre à ses côtés. La difficulté et la complexité de ce projet sera l'implémentation des diverses entités et de leurs fonctionnalités. Il faudra aussi implémenter un contrôleur qui permettra l'utilisation de ces diverses entités.
+          </p>
+      </div>
+    </div>
+    <br>
+    <!--Plan de développement-->
+    <div class="container">
+      <div class="row">
+          <h3>Plan de développement</h3>
+      </div>
+      <div class="row">
+          <p>
+            Voici le plan de développement que je vais espérer suivre, bien évidemment il se peut que certaine modifications adviennes. J'ai pour objectif de réaliser au moins un niveau pour le jeu étant donné la charge de travail que ça représente. Bien évidemment, si je réussis à avancer assez vite, j'essereai d'en faite plus.
+          </p>
+      </div>
+      <dl class="row">
+        <dt class="col-sm-3">Mois de Janvier</dt>
+        <dd class="col-sm-9">Réalisation du plan de design du jeu <strong>(Fichier Word)</strong> </dd>
+      </dl>
+      <dl class="row">
+        <dt class="col-sm-3">Mois de Février</dt>
+        <dd class="col-sm-9">Début de la programation:
+          <ul>
+            <li>Implémentation de la base du terrain</li>
+            <li>Implémentation des personnages, ennemis, tours...</li>
+            <li>Implémentation du point de départ et d'arrivée ainsi que du chemin (Waypoints) des ennemis</li>
+            <li>Implémentation du système de pose des tours et de leur différents composants</li>
+          </ul>
+        </dd>
+      </dl>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
