@@ -8,7 +8,6 @@ public class EnemyMovement : MonoBehaviour
     public GameObject enemyParticles;
     public GameObject endPoint;
     private Transform target; //target = la cible ou aller soit le waypoints
-    private int wavepointIndex = 0; //le nombre de la vague
 
     // Start is called before the first frame update
     void Start()
