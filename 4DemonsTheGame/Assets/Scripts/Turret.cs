@@ -11,8 +11,8 @@ public class Turret : MonoBehaviour
 
 
     public float range = 5f;
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    public float fireRate;
+    public float startTimeBtwShots;
     public bool closestEnemy = true;
     public bool farthestEnemy = false;
     public bool firstEnemy = false;
@@ -126,10 +126,7 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
-        {
-            return;
-        }
+        
 
         //target lock on
         //Vector2 direction = new Vector2(
@@ -140,14 +137,21 @@ public class Turret : MonoBehaviour
         //transform.up = direction;
 
         //firing
-        if (fireCountdown <= 0f)
+        if (fireRate <= 0f)
         {
+            if (target == null)
+            {
+                return;
+            }
             Shoot();
-            fireCountdown = 1f / fireRate;
+            fireRate = startTimeBtwShots;
 
         }
-
-        fireCountdown -= Time.deltaTime;
+        else
+        {
+            fireRate -= Time.deltaTime;
+        }
+        
 
     }
 

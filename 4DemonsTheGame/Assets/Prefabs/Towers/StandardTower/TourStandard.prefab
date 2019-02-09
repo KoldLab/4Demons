@@ -95,10 +95,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   range: 5
-  fireRate: 1
-  closestEnemy: 0
+  fireRate: 0
+  startTimeBtwShots: 1
+  closestEnemy: 1
   farthestEnemy: 0
-  firstEnemy: 1
+  firstEnemy: 0
   enemyTag: Enemy
   bulletPrefab: {fileID: 4387356389300259439, guid: 33f3312fedb48f147a8c2cd7da4fb4d1,
     type: 3}

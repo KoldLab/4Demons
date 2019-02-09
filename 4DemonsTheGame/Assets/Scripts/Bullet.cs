@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -36,9 +35,9 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        Vector2 direction = target.position - transform.position; //creer un vecteur de notre position vers la position a aller... transform.position donne notre position
+        Vector2 direction = target.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime);
+
 
 
     }
@@ -47,7 +46,8 @@ public class Bullet : MonoBehaviour
 
         if (collider.tag == "Enemy")
         {
-            GameObject bulletExplo = (GameObject)Instantiate(explosionPrefab, transform.position, transform.rotation);
+            
+           GameObject bulletExplo = (GameObject)Instantiate(explosionPrefab, transform.position, transform.rotation);
 
 
             if (explosionRadius > 0f)
@@ -92,7 +92,7 @@ public class Bullet : MonoBehaviour
     {
         GameObject ennemyExplosion = (GameObject)Instantiate(enemy.GetComponent<EnemyMovement>().enemyParticles, enemy.transform.position, enemy.transform.rotation);
         Destroy(enemy.gameObject);
-        Destroy(ennemyExplosion, 1);
+        Destroy(ennemyExplosion, 3);
     }
 
     private void OnDrawGizmosSelected()
