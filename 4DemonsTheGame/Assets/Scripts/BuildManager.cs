@@ -34,6 +34,10 @@ public class BuildManager : MonoBehaviour
     {
         turretToBuild = turret;
     }
+    public void SetTurretToNull()
+    {
+        turretToBuild = null;
+    }
     // Update is called once per frame
     void Update()
     {

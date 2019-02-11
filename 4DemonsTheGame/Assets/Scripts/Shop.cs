@@ -9,10 +9,10 @@ public class Shop : MonoBehaviour
 
     BuildManager buildManager;
 
-
     public void PushaseTurretOne()
     {
         buildManager.SetTurretToBuild(buildManager.TurretOnePrefab);
+        
     }
 
     public void PushaseTurretTwo()

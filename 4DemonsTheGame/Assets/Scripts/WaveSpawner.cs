@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab;
     public Transform spawnPoint;
 
-    public float timeBetweenWaves = 5.0f;
+    public float timeBetweenWaves = 6f;
     private float countdown = 2;
     private int waveIndex = 0;
     public float waitInBetweenEnemies = 0.5f;
-    public Text waveCountdownText;
+    public GameObject waveCountdownText;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +31,8 @@ public class WaveSpawner : MonoBehaviour
             countdown = timeBetweenWaves;
         }
         countdown -= Time.deltaTime;
-
-       // waveCountdownText.text = (Mathf.Floor(countdown)).ToString();
-
+       waveCountdownText.GetComponent<TextMeshProUGUI>().text = countdown.ToString("f2");
+     
     }
 
     IEnumerator SpawnWave()

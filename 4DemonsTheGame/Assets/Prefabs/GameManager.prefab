@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6221259369481381250}
   - component: {fileID: 6221259369481381249}
+  - component: {fileID: 229287101}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,3 +50,21 @@ MonoBehaviour:
   timeBetweenWaves: 5
   waitInBetweenEnemies: 0.5
   waveCountdownText: {fileID: 0}
+--- !u!114 &229287101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221259369481381248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f38ece24e28237499ba9961755f97dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurretOnePrefab: {fileID: 5858854246960186392, guid: 06a9cf5616154094b8bfce4c4e453860,
+    type: 3}
+  TurretTwoPrefab: {fileID: 5858854246960186392, guid: 06a9cf5616154094b8bfce4c4e453860,
+    type: 3}
+  TurretThreePrefab: {fileID: 5858854246960186392, guid: 06a9cf5616154094b8bfce4c4e453860,
+    type: 3}

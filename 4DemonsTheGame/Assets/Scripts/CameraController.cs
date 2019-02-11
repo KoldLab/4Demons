@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
     private bool doMovement = true;
     public float panSpeed = 30f;
     public float panBorderThickness = 10f;
+    public float droite = 4.6f;
+    public float gauche = 4.4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +29,11 @@ public class CameraController : MonoBehaviour
             return;
 
       
-        if (transform.position.x <= 6f && (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness))
+        if (transform.position.x <= droite && (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness))
         {
             transform.Translate(Vector2.right * panSpeed * Time.deltaTime);
         }
-        if (transform.position.x >= -6 && (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness))
+        if (transform.position.x >= -gauche && (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness))
         {
             transform.Translate(Vector2.left * panSpeed * Time.deltaTime);
         }
