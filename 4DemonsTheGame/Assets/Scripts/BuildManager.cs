@@ -21,21 +21,30 @@ public class BuildManager : MonoBehaviour
 
     public GameObject TurretOnePrefab;
     public GameObject TurretTwoPrefab;
-    public GameObject TurretThreePrefab;
 
-    private GameObject turretToBuild;
 
-    public GameObject GetTurretToBuild()
+    private TurretBlueprint turretToBuild;
+
+    public bool CanBuild
     {
-        return turretToBuild;
+        get { return turretToBuild == null;  }
     }
 
-    public void SetTurretToBuild(GameObject turret)
+    public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        Debug.Log(turretToBuild == null);
     }
-    public void SetTurretToNull()
+
+    public void BuildTurretOn(Node node)
     {
+        if(LevelStatus.Money < turretToBuild.cost)
+        {
+            return;
+        }
+        GameObject turret = (GameObject) Instantiate(turretToBuild.prefab, node.transform.position, node.transform.rotation);
+        node.turret = turret;
+        LevelStatus.Money -= turretToBuild.cost;
         turretToBuild = null;
     }
     // Update is called once per frame

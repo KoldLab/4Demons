@@ -59,7 +59,6 @@ public class Bullet : MonoBehaviour
                 Damage(target);
             }
 
-            Debug.Log("ok");
             Destroy(gameObject);
             Destroy(bulletExplo, 1);
         }
@@ -91,6 +90,7 @@ public class Bullet : MonoBehaviour
     void Damage(Transform enemy)
     {
         GameObject ennemyExplosion = (GameObject)Instantiate(enemy.GetComponent<EnemyMovement>().enemyParticles, enemy.transform.position, enemy.transform.rotation);
+        LevelStatus.Money += enemy.GetComponent<EnemyMovement>().souls;
         Destroy(enemy.gameObject);
         Destroy(ennemyExplosion, 3);
     }

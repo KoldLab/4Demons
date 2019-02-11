@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 5.0f;
     public GameObject enemyParticles;
     public GameObject endPoint;
+    public int souls = 10;
     private Transform target; //target = la cible ou aller soit le waypoints
 
     // Start is called before the first frame update

@@ -7,12 +7,12 @@ public class Node : MonoBehaviour
 {
     public Color hoverColor;
 
-    private GameObject turret;
+    public GameObject turret;
 
     private Color startColor;
     private SpriteRenderer rend;
 
-
+    [Header("Optional")]
     BuildManager buildManager;
     // Start is called before the first frame update
     void Start()
@@ -25,21 +25,20 @@ public class Node : MonoBehaviour
     void OnMouseDown()
     {
 
-        if (buildManager.GetTurretToBuild() == null)
+        if (buildManager.CanBuild)
         {
             return;
         }
         if (turret != null)
-        {
+        { 
             Debug.Log("Can't build there!"); //TODO DIsplay on screen
             return;
         }
 
         //build a turret
 
-        GameObject turretToBuild = buildManager.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
-        buildManager.SetTurretToNull();
+        buildManager.BuildTurretOn(this);
+
 
     }
 
@@ -51,7 +50,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (buildManager.GetTurretToBuild() == null)
+        if (buildManager.CanBuild)
         {
             return;
         }

@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    public TurretBlueprint standardTurret;
-    public TurretBlueprint missileTurret;
+    public TurretBlueprint standardTower;
 
     BuildManager buildManager;
 
-    public void PushaseTurretOne()
+    public void SelectTurretOne()
     {
-        buildManager.SetTurretToBuild(buildManager.TurretOnePrefab);
+        buildManager.SelectTurretToBuild(standardTower);
         
     }
 
-    public void PushaseTurretTwo()
-    {
-        buildManager.SetTurretToBuild(buildManager.TurretTwoPrefab);
-    }
+    //public void SelectTurretTwo()
+    //{
+    //    buildManager.SelectTurretToBuild(buildManager.TurretTwoPrefab);
+    //}
 
-    public void PushaseTurretThree()
-    {
-        buildManager.SetTurretToBuild(buildManager.TurretThreePrefab);
-    }
+    //public void SelectTurretThree()
+    //{
+    //    buildManager.SelectTurretToBuild(buildManager.TurretThreePrefab);
+    //}
     // Start is called before the first frame update
     void Start()
     {
