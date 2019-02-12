@@ -16,6 +16,15 @@ public class CameraController : MonoBehaviour
 
     }
 
+    public void switchCamMovement()
+    {
+        if (doMovement == true)
+        {
+            doMovement = false;
+        }
+        else
+            doMovement = true;
+    }
     // Update is called once per frame
     void Update()
     {
