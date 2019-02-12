@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (Vector2.Distance(transform.position, target.position) <= 0.2f)
         {
+            LevelStatus.LifePoint -= 1;
             Destroy(gameObject);
         }
         //il faut bouger avec cette direction et on le normalize pour avoir une vitesse de 1 qu'on multipliera par notre vitesse. Time.detaTime sert a ne pas dependre des frames

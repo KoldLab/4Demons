@@ -8,6 +8,7 @@ using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     public Transform enemyPrefab;
+    public Transform enemyPrefab2;
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 6f;
@@ -48,7 +49,14 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        if(waveIndex % 2 == 0)
+        {
+            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        }
+        else
+        {
+            Instantiate(enemyPrefab2, spawnPoint.position, spawnPoint.rotation);
+        }
     }
 
 }
