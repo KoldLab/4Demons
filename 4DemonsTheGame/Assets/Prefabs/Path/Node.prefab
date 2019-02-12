@@ -93,7 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30b8bd2387867a48badb4fa06bab014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  hoverColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  notEnoughMoneyColor: {r: 1, g: 0, b: 0, a: 1}
+  turret: {fileID: 0}
 --- !u!61 &4737538196061840741
 BoxCollider2D:
   m_ObjectHideFlags: 0

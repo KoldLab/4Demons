@@ -28,6 +28,12 @@ public class BuildManager : MonoBehaviour
     public bool CanBuild
     {
         get { return turretToBuild == null;  }
+    
+    }
+    public bool HasMoney
+    {
+        get { return LevelStatus.Money >= turretToBuild.cost; }
+
     }
 
     public void SelectTurretToBuild(TurretBlueprint turret)
@@ -46,6 +52,7 @@ public class BuildManager : MonoBehaviour
         node.turret = turret;
         LevelStatus.Money -= turretToBuild.cost;
         turretToBuild = null;
+
     }
     // Update is called once per frame
     void Update()

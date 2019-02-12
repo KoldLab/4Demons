@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour
 {
     public Color hoverColor;
+    public Color notEnoughMoneyColor;
 
     public GameObject turret;
 
@@ -19,7 +20,7 @@ public class Node : MonoBehaviour
     {
         buildManager = BuildManager.instance;
         rend = GetComponent<SpriteRenderer>();
-        startColor = rend.color;
+        startColor = rend.material.color;
     }
 
     void OnMouseDown()
@@ -54,11 +55,21 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        rend.color = hoverColor;
+
+        if (buildManager.HasMoney)
+        {
+            rend.material.color = hoverColor;
+        }
+        else
+        {
+            rend.material.color = notEnoughMoneyColor;
+        }
+
     }
+        
     void OnMouseExit()
     {
-        rend.color = startColor;
+        rend.material.color = startColor;
     }
 
     // Update is called once per frame
