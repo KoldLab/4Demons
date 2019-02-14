@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shop : MonoBehaviour
 {
@@ -27,11 +28,12 @@ public class Shop : MonoBehaviour
     void Start()
     {
         buildManager = BuildManager.instance;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

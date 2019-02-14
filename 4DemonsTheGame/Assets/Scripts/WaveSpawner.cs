@@ -26,7 +26,7 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countdown <= 0)//quand le countdown est 0 on spawn ennemies
+        if (countdown <= 0.009)//quand le countdown est 0 on spawn ennemies
         {
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
