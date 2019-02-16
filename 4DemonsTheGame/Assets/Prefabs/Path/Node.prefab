@@ -96,6 +96,8 @@ MonoBehaviour:
   hoverColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   notEnoughMoneyColor: {r: 1, g: 0, b: 0, a: 1}
   turret: {fileID: 0}
+  gameController: {fileID: 972226493171502619, guid: f65976e5b6eeed0458802083800f1a0e,
+    type: 3}
 --- !u!61 &4737538196061840741
 BoxCollider2D:
   m_ObjectHideFlags: 0

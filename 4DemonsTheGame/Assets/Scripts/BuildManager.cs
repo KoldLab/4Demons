@@ -7,6 +7,8 @@ public class BuildManager : MonoBehaviour
 
     //only one build manage - singleton
     public static BuildManager instance; //stores a reference to itself
+    private bool active = false;
+    public GameController gameController;
 
     void Awake()
     {
@@ -16,6 +18,16 @@ public class BuildManager : MonoBehaviour
             Debug.LogError("More than one BuildManager in scene");
         }
         instance = this;
+    }
+
+    public bool getActive()
+    {
+        return this.active;
+    } 
+
+    public void setActive(bool state)
+    {
+        this.active = state;
     }
 
 
@@ -28,7 +40,6 @@ public class BuildManager : MonoBehaviour
     public bool CanBuild
     {
         get { return turretToBuild == null;  }
-    
     }
     public bool HasMoney
     {
@@ -39,7 +50,6 @@ public class BuildManager : MonoBehaviour
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
-        Debug.Log(turretToBuild == null);
     }
 
     public void BuildTurretOn(Node node)
@@ -52,8 +62,17 @@ public class BuildManager : MonoBehaviour
         node.turret = turret;
         LevelStatus.Money -= turretToBuild.cost;
         turretToBuild = null;
-
+        this.setActive(false);
+        gameController.Resume();
     }
+
+    public void cancelBuild()
+    {
+        turretToBuild = null;
+        Debug.Log("GameResumed");
+        gameController.Resume();
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -12,6 +12,7 @@ public class Node : MonoBehaviour
 
     private Color startColor;
     private SpriteRenderer rend;
+    
 
     [Header("Optional")]
     BuildManager buildManager;
@@ -39,7 +40,7 @@ public class Node : MonoBehaviour
         //build a turret
 
         buildManager.BuildTurretOn(this);
-
+        
 
     }
 
