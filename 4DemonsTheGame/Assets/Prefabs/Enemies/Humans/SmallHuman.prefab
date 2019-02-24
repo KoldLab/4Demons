@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 7393038664329692615}
   - component: {fileID: 7393038664329692611}
   - component: {fileID: 2045099974782071138}
+  - component: {fileID: 7222268074451709184}
   m_Layer: 0
   m_Name: SmallHuman
   m_TagString: Enemy
@@ -386,3 +387,17 @@ MonoBehaviour:
   souls: 10
   hp: 100
   hpBar: {fileID: 1695885671}
+--- !u!114 &7222268074451709184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393038664329692614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938ded7701db27645b93a08622f4e552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endPoint: {fileID: 2155563031329887996, guid: 4d35a0af692e670428ed2d0515ac7a0c,
+    type: 3}

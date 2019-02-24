@@ -49,8 +49,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        //build a turret
-
+        //build a turret     
         BuildTurret(buildManager.getTurretToBuild());
         
     }
@@ -58,8 +57,10 @@ public class Node : MonoBehaviour
     //Build Turret
     void BuildTurret(TurretBlueprint blueprint)
     {
+
         if (LevelStatus.Money < blueprint.cost)
         {
+            gameController.Resume();
             return;
         }
         LevelStatus.Money -= blueprint.cost;
@@ -67,8 +68,7 @@ public class Node : MonoBehaviour
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation);
         turret = _turret;
         turretBlueprint = blueprint;
-
-        gameController.Resume();
+        buildManager.cancelBuild();
     }
 
     //Upgrade Turret

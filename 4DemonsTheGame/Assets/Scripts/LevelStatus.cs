@@ -8,6 +8,8 @@ public class LevelStatus : MonoBehaviour
 {
     public static int Money;
     public static int LifePoint;
+    public static int Rounds;
+    public static int EnemyKilled;
     public int startLifePoint = 20;
     public int startMoney = 400;
     public GameObject soulsAmount;

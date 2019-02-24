@@ -7,14 +7,18 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
-    public Transform enemyPrefab2;
-    public Transform spawnPoint;
+    public static int EnemiesAlive = 0;
+    public bool waveStatus = false; //if wave started = true
+    public Wave[] waves;
 
-    public float timeBetweenWaves = 6f;
-    private float countdown = 2;
+    public Transform spawnPoint;
+    public double timeBetweenWaves = 6f;
+    private double countdown = 2;
     private int waveIndex = 0;
+
+    [HideInInspector]
     public float waitInBetweenEnemies = 0.5f;
+
     public GameObject waveCountdownText;
 
     // Start is called before the first frame update
@@ -26,37 +30,57 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countdown <= 0.009)//quand le countdown est 0 on spawn ennemies
+        if(waveStatus == true)
+        {
+            return;
+        }
+        if(EnemiesAlive > 0)
+        {                      
+            return;
+        }
+        if (countdown <= 0)//quand le countdown est 0 on spawn ennemies
         {
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
+            return;
         }
         countdown -= Time.deltaTime;
-       waveCountdownText.GetComponent<TextMeshProUGUI>().text = countdown.ToString("f2");
+        if(countdown < 0)
+        {
+            waveCountdownText.GetComponent<TextMeshProUGUI>().text = "0.00";
+        }
+        else
+            waveCountdownText.GetComponent<TextMeshProUGUI>().text = countdown.ToString("f2");
      
     }
 
     IEnumerator SpawnWave()
     {
-        waveIndex++;
-        for (int i = 0; i < waveIndex; i++)
-        {
-            SpawnEnemy();
-            yield return new WaitForSeconds(waitInBetweenEnemies);
-        }
+        waveStatus = true;
+        LevelStatus.Rounds++;
 
+        Wave wave = waves[waveIndex];
+        for (int i = 0; i < wave.count; i++)
+        {
+            SpawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(1f / wave.rate);
+        }
+        waveIndex++;
+
+        if(waveIndex == waves.Length)
+        {
+            Debug.Log("LEVEL WON");
+            this.enabled = false;
+        }
+        waveStatus = false;
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
-        if(waveIndex % 2 == 0)
-        {
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        }
-        else
-        {
-            Instantiate(enemyPrefab2, spawnPoint.position, spawnPoint.rotation);
-        }
+        
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        
+        EnemiesAlive++;
     }
 
 }

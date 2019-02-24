@@ -308,10 +308,10 @@ RectTransform:
   m_Father: {fileID: 1133569739}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 48.75, y: -30.95}
+  m_SizeDelta: {x: 97.5, y: 61.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11221651
 MonoBehaviour:
@@ -1621,10 +1621,10 @@ RectTransform:
   m_Father: {fileID: 1133569739}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 151.25, y: -30.95}
+  m_SizeDelta: {x: 97.5, y: 61.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &622547153
 MonoBehaviour:
@@ -1665,7 +1665,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 622547154}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 719288833}
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &622547154
@@ -1792,7 +1803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &692623474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1920,7 +1931,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 692623473}
   upgradeCost: {fileID: 1048670502}
-  upgradeButton: {fileID: 0}
+  sell: {fileID: 1941208538}
+  upgradeButton: {fileID: 11221651}
 --- !u!1 &784531525
 GameObject:
   m_ObjectHideFlags: 0
@@ -7050,7 +7062,7 @@ GameObject:
   - component: {fileID: 1941208539}
   - component: {fileID: 1941208538}
   m_Layer: 0
-  m_Name: cost
+  m_Name: sell cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7658,6 +7670,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
         type: 3}
+      propertyPath: waves.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 4401248805291512356}
@@ -7672,6 +7689,86 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7393038664329692609, guid: 3530d502ce94c5b4ab675ab5c4359cc3,
         type: 3}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 7393038664329692614, guid: 3530d502ce94c5b4ab675ab5c4359cc3,
+        type: 3}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[0].count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 7393038664329692614, guid: 3530d502ce94c5b4ab675ab5c4359cc3,
+        type: 3}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemy
+      value: 
+      objectReference: {fileID: 7393038664329692614, guid: 3530d502ce94c5b4ab675ab5c4359cc3,
+        type: 3}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[3].enemy
+      value: 
+      objectReference: {fileID: 7393038664329692614, guid: 3530d502ce94c5b4ab675ab5c4359cc3,
+        type: 3}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[4].enemy
+      value: 
+      objectReference: {fileID: 7393038664329692614, guid: 3530d502ce94c5b4ab675ab5c4359cc3,
+        type: 3}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[1].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[2].count
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[3].count
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[4].count
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[0].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[1].rate
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[2].rate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[3].rate
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221259369481381249, guid: f65976e5b6eeed0458802083800f1a0e,
+        type: 3}
+      propertyPath: waves.Array.data[4].rate
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 229287101, guid: f65976e5b6eeed0458802083800f1a0e, type: 3}
       propertyPath: TurretTwoPrefab
       value: 
