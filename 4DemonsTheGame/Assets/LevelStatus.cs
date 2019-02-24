@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+
 
 public class LevelStatus : MonoBehaviour
 {
@@ -22,9 +22,6 @@ public class LevelStatus : MonoBehaviour
     {
         hP.GetComponent<TextMeshProUGUI>().text = LifePoint.ToString();
         soulsAmount.GetComponent<TextMeshProUGUI>().text = Money.ToString();
-        if(LifePoint == 0)
-        {
-            SceneManager.LoadScene(0);
-        }
+       
     }
 }

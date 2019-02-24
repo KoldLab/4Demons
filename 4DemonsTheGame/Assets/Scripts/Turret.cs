@@ -89,8 +89,7 @@ public class Turret : MonoBehaviour
                 Debug.Log(largestDistance);
             }
             if (farthestEnemy != null && largestDistance <= range)
-            {
-                Debug.Log("target acquired");
+            {              
                 target = farthestEnemy.transform;
             }
             if (target != null && Vector2.Distance(transform.position, target.position) > range)
@@ -126,15 +125,6 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
-        //target lock on
-        //Vector2 direction = new Vector2(
-        //    transform.position.x - target.position.x,
-        //    transform.position.y - target.position.y
-        //    );
-
-        //transform.up = direction;
 
         //firing
         if (fireRate <= 0f)

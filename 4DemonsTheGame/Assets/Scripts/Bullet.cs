@@ -10,11 +10,13 @@ public class Bullet : MonoBehaviour
     public float explosionRadius = 0f;
     public float rotationSpeed = 1000f;
     public float speed = 25f;
+    public float damage = 50f;
 
     [Header("Unity Setup Fields")]
     public GameObject explosionPrefab;
     private Transform target;
     private Rigidbody2D rb;
+
 
 
     public void Seek(Transform _target)
@@ -56,7 +58,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                Damage(target);
+                Damage(target,damage);
             }
 
             Destroy(gameObject);
@@ -79,20 +81,22 @@ public class Bullet : MonoBehaviour
         foreach (RaycastHit2D hits in raycastHit2Ds)
         {
             if (hits.transform.tag == "Enemy")
-            {
-                Debug.Log("hello");
-                Damage(hits.transform);
+            {   
+                    Damage(hits.transform, damage);    
             }
         }
 
     }
 
-    void Damage(Transform enemy)
+    void Damage(Transform enemy, float damage)
     {
-        GameObject ennemyExplosion = (GameObject)Instantiate(enemy.GetComponent<EnemyMovement>().enemyParticles, enemy.transform.position, enemy.transform.rotation);
-        LevelStatus.Money += enemy.GetComponent<EnemyMovement>().souls;
-        Destroy(enemy.gameObject);
-        Destroy(ennemyExplosion, 3);
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        if(e != null)
+        {
+            e.TakeDamage(damage);
+        }
+        
     }
 
     private void OnDrawGizmosSelected()

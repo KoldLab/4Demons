@@ -1,19 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public float speed = 5.0f;
     public GameObject enemyParticles;
+    [HideInInspector]
+    
+
     public GameObject endPoint;
+
     public int souls = 10;
+
     private Transform target; //target = la cible ou aller soit le waypoints
+
+    public float hp = 100;
+    private float startingHp;
+
+    [Header("Unity Stuff")]
+    public Image hpBar;
 
     // Start is called before the first frame update
     void Start()
     {
+        startingHp = hp;
         target = endPoint.transform; //on donne le target au premier waypoints quon va update
+    }
+
+    public void TakeDamage(float amount)
+    {
+        hp -= amount;
+
+        hpBar.fillAmount = hp/startingHp;
+
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        LevelStatus.Money += souls;
+        GameObject effect = (GameObject)Instantiate(enemyParticles, transform.position, transform.rotation);
+        Destroy(effect, 5f);
+        Destroy(gameObject);
     }
 
     // Update is called once per frame

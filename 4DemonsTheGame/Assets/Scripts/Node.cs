@@ -8,7 +8,12 @@ public class Node : MonoBehaviour
     public Color hoverColor;
     public Color notEnoughMoneyColor;
 
+    [HideInInspector]
     public GameObject turret;
+    [HideInInspector]
+    public TurretBlueprint turretBlueprint;
+    [HideInInspector]
+    public bool isUpgraded = false;
 
     private Color startColor;
     private SpriteRenderer rend;
@@ -16,9 +21,11 @@ public class Node : MonoBehaviour
 
     [Header("Optional")]
     BuildManager buildManager;
+    GameController gameController;
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameController.instance;
         buildManager = BuildManager.instance;
         rend = GetComponent<SpriteRenderer>();
         startColor = rend.material.color;
@@ -26,33 +33,90 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
-
-        if (buildManager.CanBuild)
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
+       
         if (turret != null)
-        { 
-            Debug.Log("Can't build there!"); //TODO DIsplay on screen
+        {
+            buildManager.SelectNode(this);
+            return;
+        }
+
+        if (buildManager.GetTurretToBuild() == null)
+        {
             return;
         }
 
         //build a turret
 
-        buildManager.BuildTurretOn(this);
+        BuildTurret(buildManager.getTurretToBuild());
         
+    }
 
+    //Build Turret
+    void BuildTurret(TurretBlueprint blueprint)
+    {
+        if (LevelStatus.Money < blueprint.cost)
+        {
+            return;
+        }
+        LevelStatus.Money -= blueprint.cost;
+
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation);
+        turret = _turret;
+        turretBlueprint = blueprint;
+
+        gameController.Resume();
+    }
+
+    //Upgrade Turret
+    public void UpgradeTurret()
+    {
+        if (LevelStatus.Money < turretBlueprint.upgradeCost)
+        {
+            return;
+        }
+        LevelStatus.Money -= turretBlueprint.upgradeCost;
+        
+        //get rid of old turret
+        Destroy(turret);
+        Debug.Log("Turret Destroyed");
+        //build upgraded one
+        GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, transform.position, transform.rotation);
+        turret = _turret;
+        
+        Debug.Log("Turret Upgraded");
+        isUpgraded = true;     
+
+    }
+
+    //Sell Turret
+    public void SellTurret()
+    {
+        if (!this.isUpgraded)
+        {
+            LevelStatus.Money += turretBlueprint.GetSellAmount();
+        }
+        else
+        {
+            LevelStatus.Money += turretBlueprint.GetUpgradedSellAmount();
+        }
+        //get rid of old turret
+        Destroy(turret);
+        turretBlueprint = null;
     }
 
     void OnMouseEnter()
     {
-
+        Debug.Log(buildManager.GetTurretToBuild() == null);
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
 
-        if (buildManager.CanBuild)
+        if (buildManager.GetTurretToBuild() == null)
         {
             return;
         }

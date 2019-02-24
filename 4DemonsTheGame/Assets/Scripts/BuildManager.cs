@@ -8,7 +8,8 @@ public class BuildManager : MonoBehaviour
     //only one build manage - singleton
     public static BuildManager instance; //stores a reference to itself
     private bool active = false;
-    public GameController gameController;
+    GameController gameController;
+    private Node selectedNode;
 
     void Awake()
     {
@@ -30,42 +31,57 @@ public class BuildManager : MonoBehaviour
         this.active = state;
     }
 
-
     public GameObject TurretOnePrefab;
+
     public GameObject TurretTwoPrefab;
 
 
     private TurretBlueprint turretToBuild;
 
-    public bool CanBuild
-    {
-        get { return turretToBuild == null;  }
-    }
+    public bool CanBuild => !(turretToBuild == null);
+
     public bool HasMoney
     {
         get { return LevelStatus.Money >= turretToBuild.cost; }
 
     }
 
-    public void SelectTurretToBuild(TurretBlueprint turret)
+    public TurretBlueprint GetTurretToBuild()
     {
-        turretToBuild = turret;
+        return turretToBuild;
     }
+    public NodeUI nodeUI;
 
-    public void BuildTurretOn(Node node)
+    public void SelectNode(Node node)
     {
-        if(LevelStatus.Money < turretToBuild.cost)
+        if(selectedNode == node)
         {
+            DeselectNode();
             return;
         }
-        GameObject turret = (GameObject) Instantiate(turretToBuild.prefab, node.transform.position, node.transform.rotation);
-        node.turret = turret;
-        LevelStatus.Money -= turretToBuild.cost;
+        selectedNode = node;
         turretToBuild = null;
-        this.setActive(false);
-        gameController.Resume();
+        nodeUI.SetTarget(node);
     }
 
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
+    }
+
+    public void SelectTurretToBuild(TurretBlueprint turret)
+    {
+        gameController.Pause();
+        turretToBuild = turret;
+        DeselectNode();
+    }
+
+    public TurretBlueprint getTurretToBuild()
+    {
+        return turretToBuild;
+    }
+ 
     public void cancelBuild()
     {
         turretToBuild = null;
@@ -77,5 +93,10 @@ public class BuildManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void Start()
+    {
+        gameController = GameController.instance;
     }
 }
