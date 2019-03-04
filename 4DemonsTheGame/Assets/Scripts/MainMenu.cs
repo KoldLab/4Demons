@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public string levelToLoad = "WorldOne";
+
+    public SceneFade sceneFader;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        sceneFader.FadeTo(levelToLoad);
     }
     public void Options()
     {
