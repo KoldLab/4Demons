@@ -7,7 +7,7 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public static int EnemiesAlive = 0;
+    public static int EnemiesAlive;
     public bool waveStatus = false; //if wave started = true
     public Wave[] waves;
 
@@ -24,7 +24,7 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+         EnemiesAlive = 0;
     }
 
     // Update is called once per frame
@@ -69,7 +69,7 @@ public class WaveSpawner : MonoBehaviour
 
         if(waveIndex == waves.Length)
         {
-            Debug.Log("LEVEL WON");
+            GameController.GameIsOver = true;
             this.enabled = false;
         }
         waveStatus = false;

@@ -72,7 +72,6 @@ public class BuildManager : MonoBehaviour
 
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
-        gameController.Pause();
         turretToBuild = turret;
         DeselectNode();
     }
@@ -86,8 +85,7 @@ public class BuildManager : MonoBehaviour
     public void cancelBuild()
     {
         turretToBuild = null;
-        Debug.Log("GameResumed");
-        gameController.Resume();
+        
     }
 
     // Update is called once per frame

@@ -30,6 +30,10 @@ public class CameraController : MonoBehaviour
     {
 
         //bloquer la camera
+        if (GameController.GameIsOver)
+        {
+            this.enabled = false;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             doMovement = !doMovement;

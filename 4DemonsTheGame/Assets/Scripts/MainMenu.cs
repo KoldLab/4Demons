@@ -5,14 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject ui;
 
-    public string levelToLoad = "WorldOne";
+    public string mainMenuName = "Menu";
+
+    public string levelOne = "WorldOne";
 
     public SceneFade sceneFader;
+    
+
+    public void Toggle()
+    {
+        ui.SetActive(!ui.activeSelf);
+
+        if (ui.activeSelf)
+        {         
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
 
     public void PlayGame()
     {
-        sceneFader.FadeTo(levelToLoad);
+        sceneFader.FadeTo(levelOne);
     }
     public void Options()
     {
@@ -23,18 +41,16 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    //gameMenu
     public void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        Toggle();
+        sceneFader.FadeTo(mainMenuName);
     }
-
-    public void Pause()
+   
+    public void Retry()
     {
-        Time.timeScale = 0;
-    }
-
-    public void Resume()
-    {
-        Time.timeScale = 1;
+        Toggle();
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 }

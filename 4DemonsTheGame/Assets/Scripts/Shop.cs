@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
@@ -16,10 +17,22 @@ public class Shop : MonoBehaviour
 
     public void SelectTurretOne()
     {
+        if(buildManager.getTurretToBuild() == standardTower)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            buildManager.cancelBuild();           
+            return;
+        }
         buildManager.SelectTurretToBuild(standardTower);
     }
     public void SelectTurretTwo()
-    {      
+    {
+        if (buildManager.getTurretToBuild() == missileTower)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            buildManager.cancelBuild();
+            return;
+        }
         buildManager.SelectTurretToBuild(missileTower);
     }
 

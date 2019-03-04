@@ -19,6 +19,8 @@ public class LevelStatus : MonoBehaviour
     {
         LifePoint = startLifePoint;
         Money = startMoney;
+        Rounds = 0; //il faut redefinir car variable static transporte dans toutes les scenes
+        EnemyKilled = 0;
     }
     void Update()
     {

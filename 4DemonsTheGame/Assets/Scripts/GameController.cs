@@ -6,7 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    private bool gameEnded = false;
+
+    public static bool GameIsOver;
+
+    public GameObject gameOverUI;
+
+    public string mainMenuName = "Menu";
+
+    public SceneFade scenefader;
 
     void Awake()
     {
@@ -20,26 +27,29 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GameIsOver = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameEnded)
+        if (GameIsOver)
         {
+            
             return;
         }
         if(LevelStatus.LifePoint <= 0)
         {
+            Debug.Log("Rounds survivded" + LevelStatus.Rounds);
             EndGame();
         }
     }
 
-    void EndGame()
+    public void EndGame()
     {
-        gameEnded = true;
-        SceneManager.LoadScene(0);
+        GameIsOver = true;
+        Pause();
+        gameOverUI.SetActive(true);
     }
 
     public void Pause()
