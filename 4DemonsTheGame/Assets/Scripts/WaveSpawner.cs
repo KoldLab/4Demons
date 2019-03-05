@@ -7,11 +7,10 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public int enemiesAlive;
-    public static int EnemiesAlive;
     public static int EnemiesLeft;
     public static int NumberOfRounds;
     public static bool LastWaveIsOVer;
+
     public bool waveStatus = false; //if wave started = true
     public Wave[] waves;
 
@@ -31,12 +30,12 @@ public class WaveSpawner : MonoBehaviour
     {
         NumberOfRounds = waves.Length;
         LastWaveIsOVer = false;
-}
+        EnemiesLeft = 0;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        enemiesAlive = EnemiesLeft;
         if (waveStatus == true)
         {
             return;
@@ -91,11 +90,9 @@ public class WaveSpawner : MonoBehaviour
     }
 
     void SpawnEnemy(GameObject enemy)
-    {
-        
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-        
-        EnemiesAlive++;
+    {        
+       Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+
     }
 
 }
