@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject shopUI;
+
     public GameObject ui;
 
     public string mainMenuName = "Menu";
@@ -26,6 +29,15 @@ public class MainMenu : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    public void ToggleShop()
+    {
+        Button[] buttons = shopUI.GetComponentsInChildren<Button>();
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = !buttons[i].interactable;
+        }             
     }
 
     public void PlayGame()

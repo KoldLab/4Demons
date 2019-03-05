@@ -14,6 +14,7 @@ public class LevelStatus : MonoBehaviour
     public int startMoney = 400;
     public GameObject soulsAmount;
     public GameObject hP;
+    public GameObject waves;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class LevelStatus : MonoBehaviour
     {
         hP.GetComponent<TextMeshProUGUI>().text = LifePoint.ToString();
         soulsAmount.GetComponent<TextMeshProUGUI>().text = Money.ToString();
-       
+        waves.GetComponent<TextMeshProUGUI>().text = Rounds.ToString();
+
     }
 }
