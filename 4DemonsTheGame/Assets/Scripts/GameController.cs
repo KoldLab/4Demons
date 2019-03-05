@@ -35,12 +35,16 @@ public class GameController : MonoBehaviour
     {
         if (GameIsOver)
         {
-            
             return;
         }
         if(LevelStatus.LifePoint <= 0)
         {
             Debug.Log("Rounds survivded" + LevelStatus.Rounds);
+            EndGame();
+        }
+        if(WaveSpawner.LastWaveIsOVer == true)
+        {
+            Debug.Log("LastWaveIsDed YOU WIN");
             EndGame();
         }
     }

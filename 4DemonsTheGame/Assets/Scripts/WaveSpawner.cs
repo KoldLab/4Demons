@@ -7,7 +7,11 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public int enemiesAlive;
     public static int EnemiesAlive;
+    public static int EnemiesLeft;
+    public static int NumberOfRounds;
+    public static bool LastWaveIsOVer;
     public bool waveStatus = false; //if wave started = true
     public Wave[] waves;
 
@@ -21,20 +25,23 @@ public class WaveSpawner : MonoBehaviour
 
     public GameObject waveCountdownText;
 
+
     // Start is called before the first frame update
     void Start()
     {
-         EnemiesAlive = 0;
-    }
+        NumberOfRounds = waves.Length;
+        LastWaveIsOVer = false;
+}
 
     // Update is called once per frame
     void Update()
     {
-        if(waveStatus == true)
+        enemiesAlive = EnemiesLeft;
+        if (waveStatus == true)
         {
             return;
         }
-        if(EnemiesAlive > 0)
+        if(EnemiesLeft > 0)
         {                      
             return;
         }
@@ -54,25 +61,33 @@ public class WaveSpawner : MonoBehaviour
      
     }
 
-    IEnumerator SpawnWave()
+    IEnumerator SpawnWave() //spawn a new wave
     {
-        waveStatus = true;
-        LevelStatus.Rounds++;
+        waveStatus = true; //il y a une vague en ce moment
 
         Wave wave = waves[waveIndex];
+        EnemiesLeft = wave.count;
         for (int i = 0; i < wave.count; i++)
         {
             SpawnEnemy(wave.enemy);
             yield return new WaitForSeconds(1f / wave.rate);
         }
+        Debug.Log("++waveindex");
         waveIndex++;
 
         if(waveIndex == waves.Length)
         {
-            GameController.GameIsOver = true;
+            while (EnemiesLeft!=0)
+            {
+                yield return null;
+            }
+
+            LastWaveIsOVer = true;
             this.enabled = false;
+            
         }
         waveStatus = false;
+        LevelStatus.Rounds++;
     }
 
     void SpawnEnemy(GameObject enemy)

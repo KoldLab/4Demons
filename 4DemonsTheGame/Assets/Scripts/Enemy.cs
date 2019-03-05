@@ -38,9 +38,9 @@ public class Enemy : MonoBehaviour
     {
         GameObject effect = (GameObject)Instantiate(enemyParticles, transform.position, transform.rotation);
         Destroy(effect, 5f);
-        Destroy(gameObject);
-        WaveSpawner.EnemiesAlive--;
+        WaveSpawner.EnemiesLeft--;
         LevelStatus.EnemyKilled++;
+        Destroy(gameObject);
         LevelStatus.Money += souls;
     }
 

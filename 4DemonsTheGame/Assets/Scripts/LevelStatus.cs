@@ -27,7 +27,7 @@ public class LevelStatus : MonoBehaviour
     {
         hP.GetComponent<TextMeshProUGUI>().text = LifePoint.ToString();
         soulsAmount.GetComponent<TextMeshProUGUI>().text = Money.ToString();
-        waves.GetComponent<TextMeshProUGUI>().text = Rounds.ToString();
+        waves.GetComponent<TextMeshProUGUI>().text = Rounds.ToString() + "/" + WaveSpawner.NumberOfRounds.ToString();
 
     }
 }

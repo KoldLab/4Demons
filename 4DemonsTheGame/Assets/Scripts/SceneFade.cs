@@ -16,6 +16,7 @@ public class SceneFade : MonoBehaviour
 
     public void FadeTo(string scene)
     {
+        Debug.Log("fadetTo called");
         StartCoroutine(FadeOut(scene));
     }
 
@@ -41,7 +42,8 @@ public class SceneFade : MonoBehaviour
             float a = curve.Evaluate(t); //la fonction va prendre comme x la valeur de T
             img.color = new Color(0f, 0f, 0f, a); // couleur noir qui devient transparente
             yield return 0; //attend la prochaine frame jusqu'a t = 0
-        }       
+        }
+        Debug.Log("fadetTo succes");
         SceneManager.LoadScene(scene);
     }
 

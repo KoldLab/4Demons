@@ -62,6 +62,7 @@ public class MainMenu : MonoBehaviour
    
     public void Retry()
     {
+        Debug.Log("Retry");
         Toggle();
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
