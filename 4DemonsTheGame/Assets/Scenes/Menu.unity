@@ -1264,7 +1264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1f042cce038fe43997c5516954cd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: WorldOne
+  shopUI: {fileID: 0}
+  ui: {fileID: 0}
+  mainMenuName: Menu
+  levelOne: WorldOne
   sceneFader: {fileID: 1459520950}
 --- !u!114 &927418792
 MonoBehaviour:
@@ -1741,7 +1744,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1f042cce038fe43997c5516954cd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: WorldOne
+  shopUI: {fileID: 0}
+  ui: {fileID: 0}
+  mainMenuName: Menu
+  levelOne: WorldOne
   sceneFader: {fileID: 0}
 --- !u!1001 &1456008647
 PrefabInstance:
@@ -1809,6 +1815,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286898223671127476, guid: 07fa5904d47f22e41910e05be65de693,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286898225020193917, guid: 07fa5904d47f22e41910e05be65de693,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1313636270}
+    - target: {fileID: 6286898225020193917, guid: 07fa5904d47f22e41910e05be65de693,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -453404343
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286898225020193917, guid: 07fa5904d47f22e41910e05be65de693,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07fa5904d47f22e41910e05be65de693, type: 3}
@@ -2044,14 +2070,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 927418791}
-        m_MethodName: PlayGame
-        m_Mode: 1
+        m_MethodName: goToScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LevelSelect
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

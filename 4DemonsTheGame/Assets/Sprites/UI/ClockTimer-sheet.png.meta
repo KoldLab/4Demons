@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: df8fbeb3ebdba3c429d0a0cca704f3f7
+guid: d2df75ca71589384e8c104baa07d0147
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ClockTimer_0
-    21300002: ClockTimer_1
-    21300004: ClockTimer_2
-    21300006: ClockTimer_3
-    21300008: ClockTimer_4
-    21300010: ClockTimer_5
-    21300012: ClockTimer_6
-    21300014: ClockTimer_7
+    21300000: ClockTimer-sheet_0
+    21300002: ClockTimer-sheet_1
+    21300004: ClockTimer-sheet_2
+    21300006: ClockTimer-sheet_3
+    21300008: ClockTimer-sheet_4
+    21300010: ClockTimer-sheet_5
+    21300012: ClockTimer-sheet_6
+    21300014: ClockTimer-sheet_7
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -125,7 +125,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ClockTimer_0
+      name: ClockTimer-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -139,13 +139,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d7c6056dfe92f74caf1c548a00d5581
+      spriteID: e94d7245899da2a4885cce97098e3444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClockTimer_1
+      name: ClockTimer-sheet_1
       rect:
         serializedVersion: 2
         x: 19
@@ -159,13 +159,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9001078e22bb3a340b33f03f5a026939
+      spriteID: 76411424a27a56b45a851ae2e09567c6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClockTimer_2
+      name: ClockTimer-sheet_2
       rect:
         serializedVersion: 2
         x: 38
@@ -179,13 +179,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3080f4bf50dc64547aaaf1d580463330
+      spriteID: 0e2e6c7f3a4d5de4db4a443b0a0d851f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClockTimer_3
+      name: ClockTimer-sheet_3
       rect:
         serializedVersion: 2
         x: 57
@@ -199,13 +199,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a20c11c80ca6ab742b33fd2051a28c90
+      spriteID: ae4d015f950c5ac43afc166a9edefb92
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClockTimer_4
+      name: ClockTimer-sheet_4
       rect:
         serializedVersion: 2
         x: 76
@@ -219,13 +219,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 751c34aad27dfab47b3071921f19b911
+      spriteID: 50423e435feca824895605b2db3f8ec2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClockTimer_5
+      name: ClockTimer-sheet_5
       rect:
         serializedVersion: 2
         x: 95
@@ -239,13 +239,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 994efe9106f215445912eed691d00b75
+      spriteID: 3edac8e752a51264981631c832edfee8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClockTimer_6
+      name: ClockTimer-sheet_6
       rect:
         serializedVersion: 2
         x: 114
@@ -259,13 +259,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cce4d262eac9c34e939ba3aa8f79a1a
+      spriteID: 1a856b0563fc6c94a80e776bcb30aa80
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClockTimer_7
+      name: ClockTimer-sheet_7
       rect:
         serializedVersion: 2
         x: 133
@@ -279,7 +279,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10ded4dfb0f10d8459e8508941d5f728
+      spriteID: 2693b6218ac1098478a3b1883375faf2
       vertices: []
       indices: 
       edges: []
@@ -287,7 +287,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 31d16f75ae9791541a7af93b527fffe0
+    spriteID: fc28e086011c7b942944a80ce94e270e
     vertices: []
     indices: 
     edges: []

@@ -52,6 +52,10 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    public void goToScene(string sceneName)
+    {
+        sceneFader.FadeTo(sceneName);
+    }
 
     //gameMenu
     public void BackToMenu()
