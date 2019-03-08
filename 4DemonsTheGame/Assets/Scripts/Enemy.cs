@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public float hp = 100;
     private float startingHp;
 
+    private bool isDead = false;
+
     [Header("Unity Stuff")]
     public Image hpBar;
 
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour
 
         hpBar.fillAmount = hp/startingHp;
 
-        if (hp <= 0)
+        if (hp <= 0 && !isDead)
         {
             Die();
         }
@@ -36,6 +38,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        isDead = true;
         GameObject effect = (GameObject)Instantiate(enemyParticles, transform.position, transform.rotation);
         Destroy(effect, 5f);
         WaveSpawner.EnemiesLeft--;

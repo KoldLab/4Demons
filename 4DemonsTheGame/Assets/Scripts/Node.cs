@@ -104,6 +104,7 @@ public class Node : MonoBehaviour
             LevelStatus.Money += turretBlueprint.GetUpgradedSellAmount();
         }
         //get rid of old turret
+        isUpgraded = false;
         Destroy(turret);
         turretBlueprint = null;
     }

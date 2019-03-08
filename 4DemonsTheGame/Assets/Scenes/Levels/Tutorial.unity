@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dc47ec2cfd81f419dec83b60e2a1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLifePoint: 9999
+  startLifePoint: 999
   startMoney: 99999
   soulsAmount: {fileID: 927946941}
   hP: {fileID: 1279580920}
@@ -5850,6 +5850,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489265428802082395, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4489265428921872198, guid: a333dbf4eb02f434ea1a68c2dce43c76,
         type: 3}

@@ -10,10 +10,9 @@ public class GameController : MonoBehaviour
     public static bool GameIsOver;
 
     public GameObject gameOverUI;
+    public GameObject levelWonUI;
 
     public string mainMenuName = "Menu";
-
-    public SceneFade scenefader;
 
     void Awake()
     {
@@ -26,7 +25,7 @@ public class GameController : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start()
-    {
+    {         
         GameIsOver = false;
     }
 
@@ -39,14 +38,8 @@ public class GameController : MonoBehaviour
         }
         if(LevelStatus.LifePoint <= 0)
         {
-            Debug.Log("Rounds survivded" + LevelStatus.Rounds);
             EndGame();
-        }
-        if(WaveSpawner.LastWaveIsOVer == true)
-        {
-            Debug.Log("LastWaveIsDed YOU WIN");
-            EndGame();
-        }
+        }        
     }
 
     public void EndGame()
@@ -64,5 +57,11 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
+    }
+
+    public void WinLevel()
+    {
+        levelWonUI.SetActive(true);
+        GameIsOver = true;
     }
 }

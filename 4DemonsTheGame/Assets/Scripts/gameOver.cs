@@ -8,8 +8,6 @@ using UnityEngine.SceneManagement;
 public class gameOver : MonoBehaviour
 {
 
-    public TextMeshProUGUI enemiesKilled;
-    public TextMeshProUGUI waves;
     public SceneFade sceneFader;
     public string mainMenuName = "Menu";
 
@@ -19,15 +17,8 @@ public class gameOver : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        waves.text = LevelStatus.Rounds.ToString();
-        enemiesKilled.text = LevelStatus.EnemyKilled.ToString();
-    }
     public void Retry()
     {
-        Debug.Log("Retry");
         Time.timeScale = 1;
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }

@@ -9,43 +9,42 @@ public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesLeft;
     public static int NumberOfRounds;
-    public static bool LastWaveIsOVer;
 
-    public bool waveStatus = false; //if wave started = true
     public Wave[] waves;
 
     public Transform spawnPoint;
     public double timeBetweenWaves = 6f;
     private double countdown = 2;
     private int waveIndex = 0;
+    public GameObject waveCountdownText;
 
     [HideInInspector]
     public float waitInBetweenEnemies = 0.5f;
 
-    public GameObject waveCountdownText;
+    public GameController gameController;
 
 
     // Start is called before the first frame update
     void Start()
     {
         NumberOfRounds = waves.Length;
-        LastWaveIsOVer = false;
         EnemiesLeft = 0;
+        Debug.Log(waves.Length);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (waveStatus == true)
-        {
+        if (GameController.GameIsOver){
             return;
         }
-        if(EnemiesLeft > 0)
-        {                      
+        if (EnemiesLeft > 0)
+        {
             return;
         }
         if (countdown <= 0)//quand le countdown est 0 on spawn ennemies
         {
+
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
             return;
@@ -62,16 +61,24 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave() //spawn a new wave
     {
-        waveStatus = true; //il y a une vague en ce moment
 
         Wave wave = waves[waveIndex];
-        EnemiesLeft = wave.count;
-        for (int i = 0; i < wave.count; i++)
+        for (int i = 0; i < wave.GetAmountOfDifferentEnnemies(); i++)
         {
-            SpawnEnemy(wave.enemy);
-            yield return new WaitForSeconds(1f / wave.rate);
+            wave.count += wave.counts[i];
         }
-        Debug.Log("++waveindex");
+        EnemiesLeft = wave.count;
+        Debug.Log("count : " + wave.count);
+        for (int i = 0; i < wave.GetAmountOfDifferentEnnemies(); i++)
+        {
+            for (int j = 0; j < wave.counts[i]; j++)
+            {
+                Debug.Log("wave.count[i] :" + wave.counts[i]);
+                SpawnEnemy(wave.enemies[i]);
+                yield return new WaitForSeconds(1f / wave.rate);
+            }
+        }
+        
         waveIndex++;
 
         if(waveIndex == waves.Length)
@@ -81,11 +88,11 @@ public class WaveSpawner : MonoBehaviour
                 yield return null;
             }
 
-            LastWaveIsOVer = true;
+            gameController.WinLevel();
             this.enabled = false;
             
         }
-        waveStatus = false;
+        Debug.Log("Rounds++");
         LevelStatus.Rounds++;
     }
 
