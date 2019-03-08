@@ -22,5 +22,8 @@ EditorBuildSettings:
     guid: 29f77360fc9a6044abb2d2dc7e164dc2
   - enabled: 1
     path: Assets/Scenes/Levels/WorldTwo.unity
-    guid: 91e9f1116c3dd804199043fbc725732b
+    guid: ebfbbbce3c0191746a462a8dad870a0b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
