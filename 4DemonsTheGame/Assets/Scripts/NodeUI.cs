@@ -8,6 +8,10 @@ public class NodeUI : MonoBehaviour
 {
     public GameObject ui;
 
+    public GameObject shopUi;
+
+    public Shop shop;
+
     public TextMeshProUGUI upgradeCost;
 
     public TextMeshProUGUI sell;
@@ -38,9 +42,21 @@ public class NodeUI : MonoBehaviour
         }     
     }
 
+    public void OpenShop(Node _target)
+    {
+        target = _target; //set the node targeted
+
+        shop.SetNodeTarget(target); //give the targeted ndoe to the shop
+
+        shopUi.transform.position = new Vector2(target.transform.position.x, (target.transform.position.y + 1f)); //set the transform of the shop
+
+        shopUi.SetActive(true); //activate the shop     
+    }
+
     public void Hide()
     {
         ui.SetActive(false);
+        shopUi.SetActive(false);
     }
 
     public void Upgrade()

@@ -38,38 +38,29 @@ public class Node : MonoBehaviour
             return;
         }
        
-        if (turret != null)
+        if (turret != null) //if there's a turret on that node
         {
-            buildManager.SelectNode(this);
+            buildManager.SelectNode(this,true);
             return;
         }
-
-        if (buildManager.GetTurretToBuild() == null)
+        else //if there's no turret, means that you want to buy one
         {
+            buildManager.SelectNode(this, false);
             return;
         }
-
-        //build a turret     
-        BuildTurret(buildManager.getTurretToBuild());
         
     }
 
     //Build Turret
-    void BuildTurret(TurretBlueprint blueprint)
+    public void BuildTurret(TurretBlueprint blueprint)
     {
+        LevelStatus.Money -= blueprint.cost; //deduct money 
 
-        if (LevelStatus.Money < blueprint.cost)
-        {
-            gameController.Resume();
-            return;
-        }
-        LevelStatus.Money -= blueprint.cost;
-
-        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation);
-        turret = _turret;
-        turretBlueprint = blueprint;
-        buildManager.cancelBuild();
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation); //instanciate the tower
+        turret = _turret; //set the tower on taht node to the built tower
+        turretBlueprint = blueprint; //set the blueprint to the blueprint's built tower
     }
+   
 
     //Upgrade Turret
     public void UpgradeTurret()
@@ -117,20 +108,9 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (buildManager.GetTurretToBuild() == null)
-        {
-            return;
-        }
-
-        if (buildManager.HasMoney)
-        {
             rend.material.color = hoverColor;
-        }
-        else
-        {
-            rend.material.color = notEnoughMoneyColor;
-        }
 
+       
     }
         
     void OnMouseExit()

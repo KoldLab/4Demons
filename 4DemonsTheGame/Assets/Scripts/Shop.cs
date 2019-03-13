@@ -13,27 +13,27 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI standardTowerCost;
     public TextMeshProUGUI missileTowerCost;
 
+    public Button standardTowerButton;
+    public Button missileTowerButton;
+
+    private Node target;
+
     BuildManager buildManager;
 
     public void SelectTurretOne()
     {
-        if(buildManager.getTurretToBuild() == standardTower)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            buildManager.cancelBuild();           
-            return;
-        }
-        buildManager.SelectTurretToBuild(standardTower);
+        buildManager.BuildTurret(standardTower,target);//when u click on the turret it buys it
+                
     }
+
     public void SelectTurretTwo()
     {
-        if (buildManager.getTurretToBuild() == missileTower)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            buildManager.cancelBuild();
-            return;
-        }
-        buildManager.SelectTurretToBuild(missileTower);
+        buildManager.BuildTurret(missileTower, target);//when u click on the turret it buys it
+    }
+
+    public void SetNodeTarget(Node _target)
+    {
+        target = _target;
     }
 
     // Start is called before the first frame update
@@ -44,6 +44,21 @@ public class Shop : MonoBehaviour
         missileTowerCost.text = missileTower.cost + "$";
     }
 
+    void isPurchasable(Button button, TurretBlueprint _turretBlueprint)
+    {
+        if (!buildManager.HasMoney(_turretBlueprint))
+        {
+            button.interactable = false;
+        }
+        else
+            button.interactable = true;
+    }
+
+    private void Update()
+    {
+        isPurchasable(standardTowerButton, standardTower);
+        isPurchasable(missileTowerButton, missileTower);
+    }
 
     // Update is called once per frame
 }

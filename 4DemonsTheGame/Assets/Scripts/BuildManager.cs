@@ -10,6 +10,7 @@ public class BuildManager : MonoBehaviour
     private bool active = false;
     GameController gameController;
     private Node selectedNode;
+    public NodeUI nodeUI;
 
     void Awake()
     {
@@ -40,9 +41,9 @@ public class BuildManager : MonoBehaviour
 
     public bool CanBuild => !(turretToBuild == null);
 
-    public bool HasMoney
+    public bool HasMoney(TurretBlueprint _turretBlueprint)
     {
-        get { return LevelStatus.Money >= turretToBuild.cost; }
+        return LevelStatus.Money >= _turretBlueprint.cost;
 
     }
 
@@ -50,42 +51,45 @@ public class BuildManager : MonoBehaviour
     {
         return turretToBuild;
     }
-    public NodeUI nodeUI;
+    
 
-    public void SelectNode(Node node)
+    public void SelectNode(Node node, bool isOccupied)
     {
-        if(selectedNode == node)
+        if(selectedNode == node) //if you click ont he same node, it deselects it
         {
             DeselectNode();
             return;
         }
-        selectedNode = node;
-        turretToBuild = null;
-        nodeUI.SetTarget(node);
+        else
+        {
+            selectedNode = node;//else you select that node
+            if (isOccupied)
+            {                
+                nodeUI.SetTarget(node); // you open the upgrade tab
+            }
+            else
+            {
+                nodeUI.OpenShop(node); //you open the shop menu
+            }
+            
+        }        
     }
-
+    public void BuildTurret(TurretBlueprint turret, Node node) //called from shop
+    {
+        turretToBuild = turret; //set the turret to see if you have money or more functionnality
+        node.BuildTurret(turretToBuild); // build the turret
+        DeselectNode(); //deselect the node
+    }
     public void DeselectNode()
     {
         selectedNode = null;
+        turretToBuild = null;
         nodeUI.Hide();
-    }
-
-    public void SelectTurretToBuild(TurretBlueprint turret)
-    {
-        turretToBuild = turret;
-        DeselectNode();
     }
 
     public TurretBlueprint getTurretToBuild()
     {
         return turretToBuild;
-    }
-   
-
-    public void cancelBuild()
-    {
-        turretToBuild = null;
-        
     }
 
     // Update is called once per frame
