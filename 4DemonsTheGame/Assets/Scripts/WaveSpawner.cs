@@ -14,7 +14,7 @@ public class WaveSpawner : MonoBehaviour
 
     public Transform spawnPoint;
     public double timeBetweenWaves = 6f;
-    private double countdown = 2;
+    private double countdown = 10;
     private int waveIndex = 0;
     public GameObject waveCountdownText;
 
@@ -29,12 +29,14 @@ public class WaveSpawner : MonoBehaviour
     {
         NumberOfRounds = waves.Length;
         EnemiesLeft = 0;
-        Debug.Log(waves.Length);
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        NumberOfRounds = waves.Length;
+
         if (GameController.GameIsOver){
             return;
         }
@@ -78,28 +80,38 @@ public class WaveSpawner : MonoBehaviour
                 yield return new WaitForSeconds(1f / wave.rate);
             }
         }
-        
-        waveIndex++;
 
-        if(waveIndex == waves.Length)
+        waveIndex++; //wave over
+        if (LevelStatus.InfinityWave)
         {
-            while (EnemiesLeft!=0)
+            AddWaves();
+        }
+
+        if (waveIndex == waves.Length)
+        {
+            while (EnemiesLeft != 0)
             {
                 yield return null;
             }
 
             gameController.WinLevel();
             this.enabled = false;
-            
+
+
         }
-        Debug.Log("Rounds++");
         LevelStatus.Rounds++;
     }
+        void AddWaves()
+        {
+            int oldLenght = waves.Length;
+            Array.Resize<Wave>(ref waves, waves.Length + 1);
+            waves[oldLenght] = new Wave(waves[oldLenght - 1].enemies, waves[oldLenght - 1].counts, 1.2, waves[oldLenght - 1].rate);
+        }
 
-    void SpawnEnemy(GameObject enemy)
-    {        
-       Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        void SpawnEnemy(GameObject enemy)
+        {
+            Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
 
-    }
-
+        }
+    
 }

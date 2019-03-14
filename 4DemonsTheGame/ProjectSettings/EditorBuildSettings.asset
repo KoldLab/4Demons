@@ -14,14 +14,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: 29a4d7f7ae83326418a5d64d9a9beb21
+  - enabled: 1
+    path: Assets/Scenes/Levels/Tutorial.unity
+    guid: 1a084071823e84648b065bb95e204672
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/21df6eaa65ab45140871ecdc9ca68d12
-    guid: 21df6eaa65ab45140871ecdc9ca68d12
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/WorldOne.unity
     guid: 29f77360fc9a6044abb2d2dc7e164dc2
   - enabled: 1
     path: Assets/Scenes/Levels/WorldTwo.unity
+    guid: 71cb756649950d242b507653bd5256c9
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/ebfbbbce3c0191746a462a8dad870a0b
     guid: ebfbbbce3c0191746a462a8dad870a0b
   - enabled: 0
     path: 
