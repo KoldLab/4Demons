@@ -25,10 +25,13 @@ EditorBuildSettings:
     guid: 29f77360fc9a6044abb2d2dc7e164dc2
   - enabled: 1
     path: Assets/Scenes/Levels/WorldTwo.unity
+    guid: d1cd57dbcf39ffa49bfd6b0aca70218a
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/71cb756649950d242b507653bd5256c9
     guid: 71cb756649950d242b507653bd5256c9
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/ebfbbbce3c0191746a462a8dad870a0b
-    guid: ebfbbbce3c0191746a462a8dad870a0b
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

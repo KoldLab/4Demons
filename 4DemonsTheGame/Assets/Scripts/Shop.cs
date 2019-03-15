@@ -20,6 +20,15 @@ public class Shop : MonoBehaviour
 
     BuildManager buildManager;
 
+    public TurretBlueprint GetStandardTower()
+    {
+        return standardTower;
+    }
+    public TurretBlueprint GetMissileTower()
+    {
+        return missileTower;
+    }
+
     public void SelectTurretOne()
     {
         buildManager.BuildTurret(standardTower,target);//when u click on the turret it buys it
