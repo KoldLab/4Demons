@@ -97,7 +97,7 @@ MonoBehaviour:
   explosionRadius: 0
   rotationSpeed: 1000
   speed: 15
-  damage: 70
+  damage: 90
   explosionPrefab: {fileID: 8854558595620526229, guid: 6457c5ecaaddae8458b1449ebddaed5a,
     type: 3}
 --- !u!50 &8799916433118304309

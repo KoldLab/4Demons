@@ -8,12 +8,14 @@ public class Node : MonoBehaviour
     public Color hoverColor;
     public Color notEnoughMoneyColor;
 
-    [HideInInspector]
+   // [HideInInspector]
     public GameObject turret;
     [HideInInspector]
     public TurretBlueprint turretBlueprint;
     [HideInInspector]
     public bool isUpgraded = false;
+
+    public PopUpBuiltTurretInfo pop;
 
     private Color startColor;
     private SpriteRenderer rend;
@@ -41,6 +43,7 @@ public class Node : MonoBehaviour
         if (turret != null) //if there's a turret on that node
         {
             buildManager.SelectNode(this,true);
+            pop.Hide();
             return;
         }
         else //if there's no turret, means that you want to buy one
@@ -48,6 +51,7 @@ public class Node : MonoBehaviour
             buildManager.SelectNode(this, false);
             return;
         }
+        
         
     }
 
@@ -109,12 +113,18 @@ public class Node : MonoBehaviour
         }
 
             rend.material.color = hoverColor;
+    
+        if(turret != null && !buildManager.nodeUI.isUiActive)
+        {
 
+            pop.SetTarget(this);
+        }
        
     }
         
     void OnMouseExit()
     {
+        pop.Hide();
         rend.material.color = startColor;
     }
 

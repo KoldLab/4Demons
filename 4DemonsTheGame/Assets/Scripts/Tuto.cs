@@ -10,6 +10,11 @@ public class Tuto : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void Resume()
+    {
+        Time.timeScale = 1;
+    }
+
     // Update is called once per frame
     void Update()
     {

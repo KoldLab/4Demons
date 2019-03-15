@@ -19,6 +19,8 @@ public class NodeUI : MonoBehaviour
     private Node target;
 
     public Button upgradeButton;
+
+    public bool isUiActive;
     
     public void SetTarget(Node _target)
     {
@@ -27,6 +29,7 @@ public class NodeUI : MonoBehaviour
         transform.position = new Vector2(target.transform.position.x,(target.transform.position.y + 0.10f));
 
         ui.SetActive(true);
+        isUiActive = true;
 
         if (!target.isUpgraded)
         {
@@ -56,6 +59,7 @@ public class NodeUI : MonoBehaviour
     public void Hide()
     {
         ui.SetActive(false);
+        isUiActive = false;
         shopUi.SetActive(false);
     }
 
