@@ -985,7 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dc47ec2cfd81f419dec83b60e2a1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLifePoint: 1
+  startLifePoint: 10
   startMoney: 400
   infinityWaves: 0
   soulsAmount: {fileID: 927946941}
@@ -1967,6 +1967,7 @@ MonoBehaviour:
   upgradeCost: {fileID: 1048670502}
   sell: {fileID: 1941208538}
   upgradeButton: {fileID: 11221651}
+  isUiActive: 0
 --- !u!1 &751987229
 GameObject:
   m_ObjectHideFlags: 0

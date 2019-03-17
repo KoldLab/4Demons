@@ -985,9 +985,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80dc47ec2cfd81f419dec83b60e2a1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLifePoint: 1
-  startMoney: 400
-  infinityWaves: 0
+  startLifePoint: 1000
+  startMoney: 9999
+  infinityWaves: 1
   soulsAmount: {fileID: 927946941}
   hP: {fileID: 1279580920}
   waves: {fileID: 1791252638}
@@ -1561,6 +1561,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4489265428972451578, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 317474802}
+    - target: {fileID: 4489265428972451578, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4489265428887898324, guid: a333dbf4eb02f434ea1a68c2dce43c76,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1571,6 +1581,12 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4489265429222085937, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3aca994a1071920459e87197dbe92f9a,
+        type: 3}
     - target: {fileID: 4489265429469582235, guid: a333dbf4eb02f434ea1a68c2dce43c76,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -1580,6 +1596,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489265429494134880, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489265429494134880, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1799073880}
+    - target: {fileID: 4489265429494134880, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489265429494134880, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4489265427960287209, guid: a333dbf4eb02f434ea1a68c2dce43c76,
         type: 3}
@@ -2116,6 +2152,7 @@ MonoBehaviour:
   upgradeCost: {fileID: 1048670502}
   sell: {fileID: 1941208538}
   upgradeButton: {fileID: 11221651}
+  isUiActive: 0
 --- !u!1 &751987229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7466,6 +7503,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791252638}
   m_CullTransparentMesh: 0
+--- !u!114 &1799073880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5084930154783438699, guid: a333dbf4eb02f434ea1a68c2dce43c76,
+    type: 3}
+  m_PrefabInstance: {fileID: 534312467}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79abc51357b3a6c488b18b29307e3160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1807867419
 GameObject:
   m_ObjectHideFlags: 0

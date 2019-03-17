@@ -61,7 +61,8 @@ public class Node : MonoBehaviour
         LevelStatus.Money -= blueprint.cost; //deduct money 
 
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation); //instanciate the tower
-        turret = _turret; //set the tower on taht node to the built tower
+        _turret.transform.localEulerAngles = new Vector3(0, 0, 0); //set the tower on taht node to the built tower
+        turret = _turret;
         turretBlueprint = blueprint; //set the blueprint to the blueprint's built tower
     }
    
@@ -80,6 +81,7 @@ public class Node : MonoBehaviour
         Debug.Log("Turret Destroyed");
         //build upgraded one
         GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, transform.position, transform.rotation);
+        _turret.transform.localEulerAngles = new Vector3(0,0,0);
         turret = _turret;
         
         Debug.Log("Turret Upgraded");
