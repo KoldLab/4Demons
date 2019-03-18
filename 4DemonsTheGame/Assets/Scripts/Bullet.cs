@@ -27,19 +27,46 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        if (target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Vector3 dir = target.position - transform.position;
+
+        float distanceThisFrame = speed * Time.deltaTime;
+
+        float rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ + 90f);
+
+        //Vector2 direction = (Vector2)target.position - rb.position;// give the position that the bullet must go
+
+        //direction.Normalize();//normalize the vector
+
+        //float rotateAmount = Vector3.Cross(direction, transform.up).z; // use cross product to rotate towards direction
+
+        //rb.angularVelocity = -rotateAmount;
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (target == null)
         {
             Destroy(gameObject);
             return;
         }
-        Vector2 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
 
+        Vector3 dir = target.position - transform.position;
+
+        float distanceThisFrame = speed * Time.deltaTime;
+    
+        float rotationZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ +90f);
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
 
     }
@@ -48,7 +75,6 @@ public class Bullet : MonoBehaviour
 
         if (collider.tag == "Enemy")
         {
-            
            GameObject bulletExplo = (GameObject)Instantiate(explosionPrefab, transform.position, transform.rotation);
 
 
@@ -62,7 +88,7 @@ public class Bullet : MonoBehaviour
             }
 
             Destroy(gameObject);
-            Destroy(bulletExplo, 1);
+            Destroy(bulletExplo, 0.5f);
         }
 
         return;

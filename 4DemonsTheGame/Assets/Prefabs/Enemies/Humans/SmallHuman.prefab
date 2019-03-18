@@ -380,9 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  enemyParticles: {fileID: 8854558595620526229, guid: d4d3c63ddc8022042bf73ad801e942b4,
-    type: 3}
-  endPoint: {fileID: 2155563031329887996, guid: 4d35a0af692e670428ed2d0515ac7a0c,
+  enemyParticles: {fileID: 2384056106045530226, guid: c46785943f8e06f47b7830806df9d52d,
     type: 3}
   souls: 10
   hp: 100

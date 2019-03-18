@@ -39,8 +39,8 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         isDead = true;
-        GameObject effect = (GameObject)Instantiate(enemyParticles, transform.position, transform.rotation);
-        Destroy(effect, 5f);
+        GameObject effect = (GameObject)Instantiate(enemyParticles, new Vector2(transform.position.x, transform.position.y + 0.35f), transform.rotation);
+        Destroy(effect, 1.08f);
         WaveSpawner.EnemiesLeft--;
         LevelStatus.EnemyKilled++;
         Destroy(gameObject);
