@@ -5,12 +5,18 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
 
+    [Header("Towers")]
+    public GameObject TurretOnePrefab;
+    public GameObject TurretTwoPrefab;
+    public GameObject ElectricTurret;
+    [Header("UI")]
+    public NodeUI nodeUI;
     //only one build manage - singleton
     public static BuildManager instance; //stores a reference to itself
     private bool active = false;
     GameController gameController;
     private Node selectedNode;
-    public NodeUI nodeUI;
+    
 
     void Awake()
     {
@@ -32,9 +38,7 @@ public class BuildManager : MonoBehaviour
         this.active = state;
     }
 
-    public GameObject TurretOnePrefab;
 
-    public GameObject TurretTwoPrefab;
 
 
     private TurretBlueprint turretToBuild;

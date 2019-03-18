@@ -75,7 +75,7 @@ public class Bullet : MonoBehaviour
 
         if (collider.tag == "Enemy")
         {
-           GameObject bulletExplo = (GameObject)Instantiate(explosionPrefab, transform.position, transform.rotation);
+           GameObject bulletExplo = (GameObject)Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
 
 
             if (explosionRadius > 0f)
