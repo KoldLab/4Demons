@@ -55,16 +55,6 @@ public class Node : MonoBehaviour
         
     }
 
-    //Build Turret
-    public void BuildTurret(TurretBlueprint blueprint)
-    {
-        LevelStatus.Money -= blueprint.cost; //deduct money 
-
-        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, transform.position, transform.rotation); //instanciate the tower
-        _turret.transform.localEulerAngles = new Vector3(0, 0, 0); //set the tower on taht node to the built tower
-        turret = _turret;
-        turretBlueprint = blueprint; //set the blueprint to the blueprint's built tower
-    }
    
 
     //Upgrade Turret
@@ -75,14 +65,9 @@ public class Node : MonoBehaviour
             return;
         }
         LevelStatus.Money -= turretBlueprint.upgradeCost;
-        
-        //get rid of old turret
-        Destroy(turret);
-        Debug.Log("Turret Destroyed");
+
         //build upgraded one
-        GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, transform.position, transform.rotation);
-        _turret.transform.localEulerAngles = new Vector3(0,0,0);
-        turret = _turret;
+        turret.GetComponent<Turret>().damageBoost = 1.1f;
         
         Debug.Log("Turret Upgraded");
         isUpgraded = true;     
@@ -118,7 +103,6 @@ public class Node : MonoBehaviour
     
         if(turret != null && !buildManager.nodeUI.isUiActive)
         {
-
             pop.SetTarget(this);
         }
        

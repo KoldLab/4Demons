@@ -6,9 +6,7 @@ public class BuildManager : MonoBehaviour
 {
 
     [Header("Towers")]
-    public GameObject TurretOnePrefab;
-    public GameObject TurretTwoPrefab;
-    public GameObject ElectricTurret;
+    public GameObjectsTable[] Towers;
     [Header("UI")]
     public NodeUI nodeUI;
     //only one build manage - singleton
@@ -78,10 +76,13 @@ public class BuildManager : MonoBehaviour
             
         }        
     }
-    public void BuildTurret(TurretBlueprint turret, Node node) //called from shop
+    public void BuildTurret(TurretBlueprint blueprint, Node node) //called from shop
     {
-        turretToBuild = turret; //set the turret to see if you have money or more functionnality
-        node.BuildTurret(turretToBuild); // build the turret
+        LevelStatus.Money -= blueprint.cost;//deduct money         
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, node.transform.position, blueprint.prefab.transform.rotation); //instanciate the tower
+        //_turret.transform.localEulerAngles = new Vector3(0, 0, 0);       
+        node.turret =  _turret; // build the turret
+        node.turretBlueprint = blueprint;
         DeselectNode(); //deselect the node
     }
     public void DeselectNode()

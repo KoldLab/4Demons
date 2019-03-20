@@ -10,30 +10,71 @@ public class PopUpTowerInfo : MonoBehaviour
 
     public TextMeshProUGUI damage;
     public TextMeshProUGUI range;
-    public TextMeshProUGUI speed;   
+    public TextMeshProUGUI speed;
+    public TextMeshProUGUI effect;
 
     public void SetTarget(Transform transform)
     {
 
-        this.transform.position = new Vector2(transform.position.x, (transform.position.y + 0.75f));
+        this.transform.position = new Vector2(transform.position.x, (transform.position.y + 1f));
         
     }
 
     public void setStats(string name)
     {
-        if(name == "StandardTower")
+        Turret tower;
+
+        if (name == "FireTower")
         {
-            damage.text = shop.GetStandardTower().prefab.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().damage.ToString();
-            range.text = shop.GetStandardTower().prefab.GetComponent<Turret>().range.ToString();
-            speed.text = shop.GetStandardTower().prefab.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().speed.ToString();
+            tower = shop.towersBlueprintTable[0].prefab.GetComponent<Turret>();
+            Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
+            effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
+            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            range.text = tower.range.ToString();
+            speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
+
         }
-        if(name == "MissileTower")
+        if (name == "WindTower")
         {
-            damage.text = shop.GetMissileTower().prefab.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().damage.ToString();
-            range.text = shop.GetMissileTower().prefab.GetComponent<Turret>().range.ToString();
-            speed.text = shop.GetMissileTower().prefab.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().speed.ToString();
+            tower = shop.towersBlueprintTable[1].prefab.GetComponent<Turret>();
+            Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
+            effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
+            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            range.text = tower.range.ToString();
+            speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
         }
-       
+        if (name == "LightningTower")
+        {
+            tower = shop.towersBlueprintTable[2].prefab.GetComponent<Turret>();
+            Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
+            effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
+            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            range.text = tower.range.ToString();
+            speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
+        }
+        if (name == "EarthTower")
+        {
+            tower = shop.towersBlueprintTable[3].prefab.GetComponent<Turret>();
+            Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
+            effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
+            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            range.text = tower.range.ToString();
+            speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
+        }
+        if(name == "WaterTower")
+        {
+            tower = shop.towersBlueprintTable[4].prefab.GetComponent<Turret>();
+            Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
+            effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
+            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            range.text = tower.range.ToString();
+            speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
+        }     
+        else
+            return;
+        
+              
+
     }
 
 }

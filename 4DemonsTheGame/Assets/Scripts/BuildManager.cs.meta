@@ -8,8 +8,9 @@ MonoImporter:
       type: 3}
   - TurretTwoPrefab: {fileID: 5858854246960186392, guid: 06a9cf5616154094b8bfce4c4e453860,
       type: 3}
-  - TurretThreePrefab: {fileID: 5858854246960186392, guid: 06a9cf5616154094b8bfce4c4e453860,
+  - ElectricTurret: {fileID: 5858854246960186392, guid: a94942362147062459a067cf53bd5274,
       type: 3}
+  - nodeUI: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

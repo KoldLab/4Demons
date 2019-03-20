@@ -6,12 +6,14 @@ public class Turret : MonoBehaviour
 {
 
     public Transform target;
+   
 
     [Header("Attributes")]
 
 
     public float range = 5f;
     public float fireRate;
+    public float damageBoost = 1f;
     public float startTimeBtwShots;
     public bool closestEnemy = true;
     public bool farthestEnemy = false;
@@ -27,7 +29,7 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);       
     }
 
     void UpdateTarget()
@@ -148,7 +150,10 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, bulletPrefab.transform.rotation);
+
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        bullet.myTower = this;
 
         if (bullet != null)
         {

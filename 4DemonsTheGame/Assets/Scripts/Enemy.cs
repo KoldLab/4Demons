@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+
+    [Header("Stats")]
     public float speed = 5.0f;
-    public GameObject enemyParticles;
-  
     public int souls = 10;
-
     public float hp = 100;
-    private float startingHp;
-
-    private bool isDead = false;
-
+    public Status enemyStatus;
+    
     [Header("Unity Stuff")]
+    public GameObject enemyParticles;
     public Image hpBar;
+    private float startingHp;
+    private bool isDead = false;
+    public enum Status {Normal, Burned, Slowed, Stunned}
 
     // Start is called before the first frame update
     void Start()
