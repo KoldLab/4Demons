@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);       
+        InvokeRepeating("UpdateTarget", 0f, 0.1f/Time.timeScale);       
     }
 
     void UpdateTarget()

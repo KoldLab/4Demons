@@ -128,11 +128,18 @@ public class Bullet : MonoBehaviour
             e.enemyStatus = Enemy.Status.Burned;
             for (int i = 0; i < 5; i++)
             {
+                if (e == null)
+                {
+                    yield break;
+                }
                 enemy.GetComponent<Enemy>().TakeDamage(damage / 10f);
                 enemy.GetComponent<Renderer>().material.color = Color.red;
                 yield return new WaitForSecondsRealtime(.1f);
-                enemy.GetComponent<Renderer>().material.color = Color.white;
+                
+                
+                
             }
+            enemy.GetComponent<Renderer>().material.color = Color.white;
             e.enemyStatus = Enemy.Status.Normal;
         }
        
@@ -167,6 +174,10 @@ public class Bullet : MonoBehaviour
         e.TakeDamage(damage);
         if (e.enemyStatus != Enemy.Status.Slowed)
         {
+            if (e == null)
+            {
+                yield break;               
+            }
             e.speed /= slow;
             e.enemyStatus = Enemy.Status.Slowed;
             enemy.GetComponent<Renderer>().material.color = Color.blue;
@@ -174,6 +185,7 @@ public class Bullet : MonoBehaviour
             e.speed *= slow;
             e.enemyStatus = Enemy.Status.Normal;
             enemy.GetComponent<Renderer>().material.color = Color.white;
+
         }
 
         Destroy(gameObject);
@@ -186,11 +198,13 @@ public class Bullet : MonoBehaviour
         float pushBack = damage/500f;
         for (int i = 0; i < 5; i++)
         {
-            if(e != null)
+            if (e == null)
             {
-                Vector2 moveTo = new Vector2(e.transform.position.x - pushBack, e.transform.position.y);
-                e.transform.position = Vector2.MoveTowards(e.transform.position, moveTo, speed * Time.deltaTime);
+                yield break;
             }
+            Vector2 moveTo = new Vector2(e.transform.position.x - pushBack, e.transform.position.y);
+            e.transform.position = Vector2.MoveTowards(e.transform.position, moveTo, speed * Time.deltaTime);
+            
                       
             yield return null;            
         }
@@ -206,9 +220,13 @@ public class Bullet : MonoBehaviour
         float originalSpeed = e.speed;
         if (e.enemyStatus != Enemy.Status.Stunned)
         {
+            if (e == null)
+            {
+                yield break;
+            }
             e.speed = 0;
             e.enemyStatus = Enemy.Status.Stunned;
-            enemy.GetComponent<Renderer>().material.color = Color.yellow;
+            enemy.GetComponent<Renderer>().material.color = Color.yellow;          
             yield return new WaitForSecondsRealtime(stunnedTime);
             e.speed = originalSpeed;
             e.enemyStatus = Enemy.Status.Normal;
