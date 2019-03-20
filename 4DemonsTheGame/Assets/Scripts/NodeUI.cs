@@ -33,7 +33,7 @@ public class NodeUI : MonoBehaviour
 
         if (!target.isUpgraded)
         {
-            upgradeCost.text = target.turretBlueprint.upgradeCost + "$";
+            upgradeCost.text = target.turretBlueprint.cost * 1.2f + "$";
             upgradeButton.interactable = true;
             sell.text = target.turretBlueprint.GetSellAmount() + "$";
         }

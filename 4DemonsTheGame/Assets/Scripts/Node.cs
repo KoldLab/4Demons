@@ -60,6 +60,7 @@ public class Node : MonoBehaviour
     //Upgrade Turret
     public void UpgradeTurret()
     {
+        float upgradeCost = turretBlueprint.cost * 1.2f;
         if (LevelStatus.Money < turretBlueprint.upgradeCost)
         {
             return;
