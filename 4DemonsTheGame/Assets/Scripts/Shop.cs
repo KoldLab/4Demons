@@ -28,7 +28,10 @@ public class Shop : MonoBehaviour
 
     BuildManager buildManager;
 
-    
+    public TurretBlueprint[] getTowersBlueprintTable()
+    {
+        return towersBlueprintTable;
+    }
 
     public void SelectFireTower()
     {
@@ -37,6 +40,7 @@ public class Shop : MonoBehaviour
     }
     public void SelectWindTower()
     {
+        Debug.Log("Select Tower");
         buildManager.BuildTurret(towersBlueprintTable[1], target);//when u click on the turret it buys it
 
     }
@@ -47,6 +51,7 @@ public class Shop : MonoBehaviour
     }
     public void SelectEarthTower()
     {
+        
         buildManager.BuildTurret(towersBlueprintTable[3], target);//when u click on the turret it buys it
 
     }
@@ -91,6 +96,8 @@ public class Shop : MonoBehaviour
             {
                 towersBlueprintTable[i].prefab = buildManager.Towers[3].towersPrefab[i - 10];
             }
+            towersBlueprintTable[i].cost = (int)towersBlueprintTable[i].prefab.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletDamage * 2;
+
         }
         fireTowerCost.text = towersBlueprintTable[0].cost + "$";
         windTowerCost.text = towersBlueprintTable[1].cost + "$";
@@ -99,10 +106,10 @@ public class Shop : MonoBehaviour
         waterTowerCost.text = towersBlueprintTable[4].cost + "$";
 
     }
-
+    
     void isPurchasable(Button button, TurretBlueprint _turretBlueprint)
     {
-        if (!buildManager.HasMoney(_turretBlueprint))
+        if (LevelStatus.Money <= _turretBlueprint.cost)
         {
             button.interactable = false;
         }

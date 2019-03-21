@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 22fa41fb469b1d34ca23aa88506f9652, type: 3}
-  m_Color: {r: 1, g: 0.8627451, b: 0, a: 1}
+  m_Color: {r: 0.95330215, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   range: 5
   fireRate: 0
   damageBoost: 1
+  cost: 0
   startTimeBtwShots: 1
   closestEnemy: 0
   farthestEnemy: 0
@@ -175,12 +176,17 @@ PrefabInstance:
     - target: {fileID: 519938354234132111, guid: 333a638eacf8f5744ad9eef697f238e1,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.86274517
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 519938354234132111, guid: 333a638eacf8f5744ad9eef697f238e1,
         type: 3}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 519938354234132111, guid: 333a638eacf8f5744ad9eef697f238e1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.95330215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 333a638eacf8f5744ad9eef697f238e1, type: 3}

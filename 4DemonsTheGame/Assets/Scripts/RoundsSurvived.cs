@@ -19,6 +19,7 @@ public class RoundsSurvived : MonoBehaviour
     {
         roundsText.text = "0";
         int round = 0; //on commence a 0
+        float speed = 0.5f; //vitesse d'update
 
         yield return new WaitForSecondsRealtime(.7f); // on attend le fade
 
@@ -27,7 +28,8 @@ public class RoundsSurvived : MonoBehaviour
             round++;
             roundsText.text = round.ToString();
 
-            yield return new WaitForSecondsRealtime(.05f); // ca va le faire tous les 0.05 secondes
+            yield return new WaitForSecondsRealtime(speed); // ca va le faire tous les 0.05 secondes
+            speed /= 2;
         }
     }
 }

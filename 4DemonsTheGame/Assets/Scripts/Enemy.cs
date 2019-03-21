@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public Image hpBar;
     private float startingHp;
     private bool isDead = false;
-    public enum Status {Normal, Burned, Slowed, Stunned}
+    public enum Status {Normal, Burned, PushedBack, Slowed, Stunned, Scorched, LightningFire, Lava, Boil, Swift, Sand, Ice, Explosion, Storm, Wood }
 
     // Start is called before the first frame update
     void Start()

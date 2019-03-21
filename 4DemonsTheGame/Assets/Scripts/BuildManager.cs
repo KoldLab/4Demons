@@ -43,11 +43,7 @@ public class BuildManager : MonoBehaviour
 
     public bool CanBuild => !(turretToBuild == null);
 
-    public bool HasMoney(TurretBlueprint _turretBlueprint)
-    {
-        return LevelStatus.Money >= _turretBlueprint.cost;
-
-    }
+    
 
     public TurretBlueprint GetTurretToBuild()
     {

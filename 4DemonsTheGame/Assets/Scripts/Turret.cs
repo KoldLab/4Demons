@@ -14,6 +14,7 @@ public class Turret : MonoBehaviour
     public float range = 5f;
     public float fireRate;
     public float damageBoost = 1f;
+    public float cost;
     public float startTimeBtwShots;
     public bool closestEnemy = true;
     public bool farthestEnemy = false;

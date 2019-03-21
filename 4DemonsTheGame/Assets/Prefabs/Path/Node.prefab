@@ -102,7 +102,9 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 0}
     upgradeCost: 0
   isUpgraded: 0
+  isCombined: 0
   pop: {fileID: 0}
+  shop: {fileID: 35385229429588304, guid: 451738ffbbd1c9648a8e7c2ad4f6e41b, type: 3}
 --- !u!61 &4737538196061840741
 BoxCollider2D:
   m_ObjectHideFlags: 0

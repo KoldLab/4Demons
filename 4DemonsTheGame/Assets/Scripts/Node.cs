@@ -14,6 +14,7 @@ public class Node : MonoBehaviour
     public TurretBlueprint turretBlueprint;
     [HideInInspector]
     public bool isUpgraded = false;
+    public bool isCombined = false;
 
     public PopUpBuiltTurretInfo pop;
 
@@ -24,6 +25,7 @@ public class Node : MonoBehaviour
     [Header("Optional")]
     BuildManager buildManager;
     GameController gameController;
+    public Shop shop;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,21 +60,101 @@ public class Node : MonoBehaviour
    
 
     //Upgrade Turret
-    public void UpgradeTurret()
+    public void UpgradeTurret(string type)
     {
-        float upgradeCost = turretBlueprint.cost * 1.2f;
-        if (LevelStatus.Money < turretBlueprint.upgradeCost)
+        int upgradeCost = (int) (turretBlueprint.cost * 1.2f);
+        if (!CanUpgrade())
         {
             return;
         }
-        LevelStatus.Money -= turretBlueprint.upgradeCost;
+        switch (type)
+        {
+            case "Fire":
+                CombineFire();
+                break;
+            case "Wind":
+                
+                break;
+            case "Lightning":
+                
+                break;
+            case "Earth":
+                
+                break;
+            case "Water":
+                
+                break;
 
-        //build upgraded one
+            default:
+                NormalUpgrade();
+                break;
+        }
+        LevelStatus.Money -= upgradeCost;
+    }
+
+    public void NormalUpgrade()
+    {
         turret.GetComponent<Turret>().damageBoost = 1.1f;
-        
-        Debug.Log("Turret Upgraded");
-        isUpgraded = true;     
+        isUpgraded = true;
+    }
+    public void CombineFire()
+    {
+        switch (turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletType)
+        {
+            case Bullet.Type.Fire:
+                turret.GetComponent<Turret>().damageBoost = 1.1f;
+                isUpgraded = true;
+                break;
+            case Bullet.Type.Wind:
+                Debug.Log("WindCombine");
+                Destroy(turret);
+                GameObject _tower1 = (GameObject)Instantiate(buildManager.Towers[0].towersPrefab[1], transform.position, buildManager.Towers[0].towersPrefab[1].transform.rotation);
+                turret = _tower1;
+                turretBlueprint = shop.towersBlueprintTable[5];
+                isCombined = true;
+                break;
+            case Bullet.Type.Lightning:
+                Destroy(turret);
+                GameObject _tower2 = (GameObject)Instantiate(buildManager.Towers[0].towersPrefab[2], transform.position, buildManager.Towers[0].towersPrefab[2].transform.rotation);
+                turret = _tower2;
+                turretBlueprint = shop.towersBlueprintTable[5];
+                isCombined = true;
+                break;
+            case Bullet.Type.Earth:
+                break;
+            case Bullet.Type.Water:
+                break;
 
+            default:
+                System.Console.WriteLine("Default case");
+                break;
+        }
+    }
+    public void CombineWind()
+    {
+
+    }
+    public void CombineLightning()
+    {
+
+    }
+    public void CombineEarth()
+    {
+
+    }
+    public void CombineWater()
+    {
+
+    }
+    public bool CanUpgrade()
+    {
+        int upgradeCost = (int)(turretBlueprint.cost * 1.2f);
+        if (LevelStatus.Money < upgradeCost)
+        {
+            return false;
+        }
+        else
+            return true;
     }
 
     //Sell Turret

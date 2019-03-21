@@ -12,7 +12,9 @@ public class NodeUI : MonoBehaviour
 
     public Shop shop;
 
+    [Header("UpgradeText")]
     public TextMeshProUGUI upgradeCost;
+    public TextMeshProUGUI CombineFire;
 
     public TextMeshProUGUI sell;
 
@@ -26,7 +28,7 @@ public class NodeUI : MonoBehaviour
     {
         target = _target;
 
-        transform.position = new Vector2(target.transform.position.x,(target.transform.position.y + 0.10f));
+        transform.position = new Vector2(target.transform.position.x,(target.transform.position.y + 0.50f));
 
         ui.SetActive(true);
         isUiActive = true;
@@ -36,6 +38,7 @@ public class NodeUI : MonoBehaviour
             upgradeCost.text = target.turretBlueprint.cost * 1.2f + "$";
             upgradeButton.interactable = true;
             sell.text = target.turretBlueprint.GetSellAmount() + "$";
+          
         }
         else
         {
@@ -63,15 +66,19 @@ public class NodeUI : MonoBehaviour
         shopUi.SetActive(false);
     }
 
-    public void Upgrade()
+    public void Upgrade(string type)
     {
-        target.UpgradeTurret();
+        if (target.CanUpgrade())
+        {
+            target.UpgradeTurret(type); //this node upgradeturret
+
+        }
         BuildManager.instance.DeselectNode();
     }
 
     public void Sell()
     {
-        target.SellTurret();
+        target.SellTurret(); //this node sell turret
         BuildManager.instance.DeselectNode();
     }
     // Start is called before the first frame update
@@ -83,6 +90,18 @@ public class NodeUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (target != null)
+        {
+            if (!target.CanUpgrade() && !target.isUpgraded)
+            {
+                upgradeCost.color = Color.red;
+                upgradeButton.interactable = false;               
+            }
+            else
+            {
+                upgradeCost.color = Color.white;
+                upgradeButton.interactable = true;              
+            }
+        }
     }
 }
