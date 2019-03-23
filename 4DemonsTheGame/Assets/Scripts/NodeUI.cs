@@ -14,13 +14,18 @@ public class NodeUI : MonoBehaviour
 
     [Header("UpgradeText")]
     public TextMeshProUGUI upgradeCost;
-    public TextMeshProUGUI CombineFire;
-
+    public TextMeshProUGUI combineFireCost;
+    public TextMeshProUGUI combineWindCost;
+    public TextMeshProUGUI combineLightningCost;
+    public TextMeshProUGUI combineEarthCost;
+    public TextMeshProUGUI combineWaterCost;
     public TextMeshProUGUI sell;
+    [Header("Buttons")]
+    public Button upgradeButton;
+    public Button[] CombineButtons;
 
     private Node target;
 
-    public Button upgradeButton;
 
     public bool isUiActive;
     
@@ -32,6 +37,15 @@ public class NodeUI : MonoBehaviour
 
         ui.SetActive(true);
         isUiActive = true;
+
+        if (!target.isCombined)
+        {
+            combineFireCost.text = target.fireCombinedBlueprint.cost + "$";
+            combineWindCost.text = target.windCombinedBlueprint.cost + "$";
+            combineLightningCost.text = target.lightningCombinedBlueprint.cost + "$";
+            combineEarthCost.text = target.earthCombinedBlueprint.cost + "$";
+            combineWaterCost.text = target.waterCombinedBlueprint.cost + "$";
+        }
 
         if (!target.isUpgraded)
         {
@@ -86,7 +100,6 @@ public class NodeUI : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -102,6 +115,26 @@ public class NodeUI : MonoBehaviour
                 upgradeCost.color = Color.white;
                 upgradeButton.interactable = true;              
             }
+            
         }
+        if(target != null)
+        {
+            if (target.isCombined)
+            {
+                foreach (Button button in CombineButtons)
+                {                    
+                    button.interactable = false;
+                }
+            }
+            else
+            {
+                foreach (Button button in CombineButtons)
+                {
+                    button.interactable = true;
+                }
+            }
+        }
+
+        
     }
 }

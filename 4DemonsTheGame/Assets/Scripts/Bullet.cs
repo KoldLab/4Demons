@@ -93,30 +93,64 @@ public class Bullet : MonoBehaviour
 
         if(e != null)
         {
-            e.TakeDamage(damage);
             switch (this.bulletType)
             {
                 case Type.Fire:
+                    e.TakeDamage(damage);
                     StartCoroutine(FireDamage(enemy.gameObject, damage, Enemy.Status.Burned,false));
                     break;
                 case Type.Wind:
+                    e.TakeDamage(damage);
                     StartCoroutine(WindDamage(enemy.gameObject, damage, Enemy.Status.PushedBack,false));
                     break;
                 case Type.Lightning:
+                    e.TakeDamage(damage);
                     StartCoroutine(LightningDamage(enemy.gameObject,damage, Enemy.Status.Stunned,false));
                     break;
                 case Type.Earth:
                     EarthDamage(enemy.gameObject, damage,false);
                     break;
                 case Type.Water:
-                    StartCoroutine(WaterDamage(enemy.gameObject,damage,false));
+                    e.TakeDamage(damage);
+                    StartCoroutine(WaterDamage(enemy.gameObject,damage,Enemy.Status.Slowed,false));
                     break;
                 case Type.Scorch:
+                    e.TakeDamage(damage);
                     StartCoroutine(ScorchDamage(enemy.gameObject, damage, Enemy.Status.Scorched));                                    
                     break;
                 case Type.LightningFire:
+                    e.TakeDamage(damage);
                     StartCoroutine(LightningFireDamage(enemy.gameObject, damage, Enemy.Status.LightningFire));
                     break;
+                case Type.Lava:
+                    LavaDamage(enemy.gameObject, damage, Enemy.Status.Lava);
+                    break;
+                case Type.Boil:
+                    e.TakeDamage(damage);
+                    StartCoroutine(BoilDamage(enemy.gameObject, damage, Enemy.Status.Boil,true));
+                    break;
+                case Type.Swift:
+                    e.TakeDamage(damage);
+                    StartCoroutine(SwiftDamage(enemy.gameObject, damage, Enemy.Status.Swift));
+                    break;
+                case Type.Sand: 
+                    SandDamage(enemy.gameObject, damage, Enemy.Status.Sand);
+                    break;
+                case Type.Ice:
+                    e.TakeDamage(damage);
+                    StartCoroutine(IceDamage(enemy.gameObject, damage, Enemy.Status.Ice));
+                    break;
+                case Type.Explosion:                   
+                    ExplosionDamage(enemy.gameObject, damage, Enemy.Status.Explosion);
+                    break;
+                case Type.Wood:
+                    WoodDamage(enemy.gameObject, damage, Enemy.Status.Wood);
+                    break;
+                case Type.Storm:
+                    e.TakeDamage(damage);
+                    StartCoroutine(StormDamage(enemy.gameObject, damage, Enemy.Status.Ice));
+                    break;
+
                 default:
                     Console.WriteLine("Default case");
                     break;
@@ -130,7 +164,6 @@ public class Bullet : MonoBehaviour
         Enemy e = enemy.GetComponent<Enemy>();
         if(e.enemyStatus != status)
         {
-            Debug.Log("Enemy status = burned");
             e.enemyStatus = status;
             for (int i = 0; i < 5; i++)
             {
@@ -150,35 +183,29 @@ public class Bullet : MonoBehaviour
         }
         if (!combo)
         {
+            e.enemyStatus = Enemy.Status.Normal;
             Destroy(gameObject);
         }
     }
 
     public void EarthDamage(GameObject enemy, float damage, bool combo)
     {
+        Debug.Log("laved");
         Enemy e = enemy.GetComponent<Enemy>();
-        Vector2 pos = new Vector2(
+        Vector2 center = new Vector3(
                     (transform.position.x),
                     (transform.position.y)
                     );
+        float radius = explosionRadius;
 
-        Vector2 dir = new Vector2(0, 0);
-
-        RaycastHit2D[] raycastHit2Ds = Physics2D.CircleCastAll(pos, explosionRadius, dir);
-        int i = 0;
-        foreach (RaycastHit2D hits in raycastHit2Ds)
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        foreach (Collider2D hits in hitColliders)
         {
+
             if (hits.transform.tag == "Enemy")
             {
-                if(i == 0)
-                {
-                    i++;
-                }
-                else
-                {
-                    hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-                }
-                
+                Debug.Log("fdsf");
+                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);                
             }
         }
         if (!combo)
@@ -187,19 +214,19 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    IEnumerator WaterDamage(GameObject enemy, float damage, bool combo)
+    IEnumerator WaterDamage(GameObject enemy, float damage, Enemy.Status status, bool combo)
     {
         Enemy e = enemy.GetComponent<Enemy>();
         float slow = damage / 10;
         
-        if (e.enemyStatus != Enemy.Status.Slowed)
+        if (e.enemyStatus != status)
         {
             if (e == null)
             {
                 yield break;               
             }
             e.speed /= slow;
-            e.enemyStatus = Enemy.Status.Slowed;
+            e.enemyStatus = status;
             enemy.GetComponent<Renderer>().material.color = Color.blue;
             yield return new WaitForSecondsRealtime(.5f);
             if (e == null)
@@ -207,12 +234,12 @@ public class Bullet : MonoBehaviour
                 yield break;
             }
             e.speed *= slow;
-            e.enemyStatus = Enemy.Status.Normal;
             enemy.GetComponent<Renderer>().material.color = Color.white;
 
         }
         if (!combo)
         {
+            e.enemyStatus = Enemy.Status.Normal;
             Destroy(gameObject);
         }
     }
@@ -246,6 +273,7 @@ public class Bullet : MonoBehaviour
         
         float stunnedTime = damage / 150f;
         float originalSpeed = e.speed;
+
             if (e == null)
             {
                 yield break;
@@ -289,10 +317,173 @@ public class Bullet : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log("Enemy status = normal");
         enemy.GetComponent<Enemy>().enemyStatus = Enemy.Status.Normal;
         Destroy(gameObject);
     }
+
+    public void LavaDamage(GameObject enemy, float damage, Enemy.Status status)
+    {
+        Enemy e = enemy.GetComponent<Enemy>();
+        Vector2 center = new Vector3(
+                    (transform.position.x),
+                    (transform.position.y)
+                    );
+        float radius = explosionRadius;
+
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        foreach (Collider2D hits in hitColliders)
+        {
+            if (hits.transform.tag == "Enemy")
+            {
+                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                StartCoroutine(FireDamage(hits.transform.gameObject, damage, status, false));
+            }
+        }
+        
+               
+    }
+
+    IEnumerator BoilDamage(GameObject enemy, float damage, Enemy.Status status, bool combo)
+    {
+        Coroutine fireDamage = StartCoroutine(FireDamage(enemy, damage, status, combo));
+        Coroutine waterDamage = StartCoroutine(WaterDamage(enemy, damage, status, combo));
+        while (fireDamage != null && waterDamage != null)
+        {
+            yield return null;
+        }
+        enemy.GetComponent<Enemy>().enemyStatus = Enemy.Status.Normal;
+        Destroy(gameObject);
+    }
+
+    IEnumerator SwiftDamage(GameObject enemy, float damage, Enemy.Status status)
+    {
+        Coroutine windDamage = StartCoroutine(WindDamage(enemy, damage, status, true));
+        Coroutine lightningDamage = StartCoroutine(LightningDamage(enemy, damage, status, true));
+        while (windDamage != null && lightningDamage != null)
+        {
+            yield return null;
+        }
+        enemy.GetComponent<Enemy>().enemyStatus = Enemy.Status.Normal;
+        Destroy(gameObject);
+    }
+
+    public void SandDamage(GameObject enemy, float damage, Enemy.Status status)
+    {
+        Enemy e = enemy.GetComponent<Enemy>();
+        Vector2 center = new Vector3(
+                    (transform.position.x),
+                    (transform.position.y)
+                    );
+        float radius = explosionRadius;
+
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        foreach (Collider2D hits in hitColliders)
+        {
+            if (hits.transform.tag == "Enemy")
+            {
+                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                StartCoroutine(WindDamage(hits.transform.gameObject, damage, status, false));
+            }
+        }
+
+
+    }
+
+    IEnumerator IceDamage(GameObject enemy, float damage, Enemy.Status status)
+    {
+        Coroutine windDamage = StartCoroutine(WindDamage(enemy, damage, status, true));
+        Coroutine waterDamage = StartCoroutine(WaterDamage(enemy, damage, status, true));
+        while (windDamage != null && waterDamage != null)
+        {
+            yield return null;
+        }
+        enemy.GetComponent<Enemy>().enemyStatus = Enemy.Status.Normal;
+        Destroy(gameObject);
+    }
+
+    public void ExplosionDamage(GameObject enemy, float damage, Enemy.Status status)
+    {
+        Enemy e = enemy.GetComponent<Enemy>();
+        Vector2 center = new Vector3(
+                    (transform.position.x),
+                    (transform.position.y)
+                    );
+        float radius = explosionRadius;
+
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        foreach (Collider2D hits in hitColliders)
+        {
+            if (hits.transform.tag == "Enemy")
+            {
+                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                StartCoroutine(LightningDamage(hits.transform.gameObject, damage, status, false));
+            }
+        }
+
+
+    }
+
+    IEnumerator StormDamage(GameObject enemy, float damage, Enemy.Status status)
+    {
+
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        float stunnedTime = damage / 150f;
+        float originalSpeed = e.speed;
+
+        if (e == null)
+        {
+            yield break;
+        }
+        e.speed = 0;
+        e.enemyStatus = status;
+        enemy.GetComponent<Renderer>().material.color = Color.yellow;
+        yield return new WaitForSecondsRealtime(stunnedTime);
+        for (int i = 0; i < 5; i++)
+        {
+            e.speed += originalSpeed / 5;
+            yield return new WaitForSecondsRealtime(.1f);
+        }
+
+        if (e == null)
+        {
+            yield break;
+        }
+        e.speed = originalSpeed;
+        e.enemyStatus = Enemy.Status.Normal;
+        enemy.GetComponent<Renderer>().material.color = Color.white;
+
+        Destroy(gameObject);
+    }
+
+    public void WoodDamage(GameObject enemy, float damage, Enemy.Status status)
+    {
+        Enemy e = enemy.GetComponent<Enemy>();
+        Vector2 center = new Vector3(
+                    (transform.position.x),
+                    (transform.position.y)
+                    );
+        float radius = explosionRadius;
+
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        foreach (Collider2D hits in hitColliders)
+        {
+            if (hits.transform.tag == "Enemy")
+            {
+                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                StartCoroutine(WaterDamage(hits.transform.gameObject, damage, status, false));
+            }
+        }
+
+
+    }
+
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -40,7 +40,6 @@ public class Shop : MonoBehaviour
     }
     public void SelectWindTower()
     {
-        Debug.Log("Select Tower");
         buildManager.BuildTurret(towersBlueprintTable[1], target);//when u click on the turret it buys it
 
     }
@@ -67,8 +66,7 @@ public class Shop : MonoBehaviour
         target = _target;
     }
 
-    // Start is called before the first frame update7
-
+    // Start is called before the first frame update    
     void Start()
     {
         buildManager = BuildManager.instance;
@@ -77,8 +75,7 @@ public class Shop : MonoBehaviour
         {
             if (i < 5)
             {
-                towersBlueprintTable[i].prefab = buildManager.Towers[i].towersPrefab[i];
-                towersBlueprintTable[i].cost = (int)towersBlueprintTable[i].prefab.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletDamage * 2;
+                towersBlueprintTable[i].prefab = buildManager.Towers[i].towersPrefab[i];              
             }               
             else if (i < 9)
             {

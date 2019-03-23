@@ -10,11 +10,18 @@ public class Node : MonoBehaviour
 
    // [HideInInspector]
     public GameObject turret;
-    [HideInInspector]
+    
     public TurretBlueprint turretBlueprint;
+    public TurretBlueprint fireCombinedBlueprint;
+    public TurretBlueprint windCombinedBlueprint;
+    public TurretBlueprint earthCombinedBlueprint;
+    public TurretBlueprint lightningCombinedBlueprint;
+    public TurretBlueprint waterCombinedBlueprint;
+
     [HideInInspector]
     public bool isUpgraded = false;
     public bool isCombined = false;
+    public float upgradeCost;
 
     public PopUpBuiltTurretInfo pop;
 
@@ -24,7 +31,7 @@ public class Node : MonoBehaviour
 
     [Header("Optional")]
     BuildManager buildManager;
-    GameController gameController;
+    GameController gameController;   
     public Shop shop;
     // Start is called before the first frame update
     void Start()
@@ -33,10 +40,12 @@ public class Node : MonoBehaviour
         buildManager = BuildManager.instance;
         rend = GetComponent<SpriteRenderer>();
         startColor = rend.material.color;
+        
     }
 
     void OnMouseDown()
     {
+        
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
@@ -57,8 +66,6 @@ public class Node : MonoBehaviour
         
     }
 
-   
-
     //Upgrade Turret
     public void UpgradeTurret(string type)
     {
@@ -67,28 +74,35 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        switch (type)
+        if(type == turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletType.ToString())
         {
-            case "Fire":
-                CombineFire();
-                break;
-            case "Wind":
-                
-                break;
-            case "Lightning":
-                
-                break;
-            case "Earth":
-                
-                break;
-            case "Water":
-                
-                break;
-
-            default:
-                NormalUpgrade();
-                break;
+            NormalUpgrade();
         }
+        else
+        {
+            switch (type)
+            {
+                case "Fire":
+                    Combine(fireCombinedBlueprint);
+                    break;
+                case "Wind":
+                    Combine(windCombinedBlueprint);
+                    break;
+                case "Lightning":
+                    Combine(lightningCombinedBlueprint);
+                    break;
+                case "Earth":
+                    Combine(earthCombinedBlueprint);
+                    break;
+                case "Water":
+                    Combine(waterCombinedBlueprint);
+                    break;
+
+                default:
+                    NormalUpgrade();
+                    break;
+            }
+        }       
         LevelStatus.Money -= upgradeCost;
     }
 
@@ -97,64 +111,94 @@ public class Node : MonoBehaviour
         turret.GetComponent<Turret>().damageBoost = 1.1f;
         isUpgraded = true;
     }
-    public void CombineFire()
+
+    public void SetCombinedPossibilities()
     {
         switch (turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletType)
         {
             case Bullet.Type.Fire:
-                turret.GetComponent<Turret>().damageBoost = 1.1f;
-                isUpgraded = true;
+                fireCombinedBlueprint = shop.towersBlueprintTable[0];
+                windCombinedBlueprint = shop.towersBlueprintTable[5];
+                earthCombinedBlueprint = shop.towersBlueprintTable[6];
+                lightningCombinedBlueprint = shop.towersBlueprintTable[7];
+                waterCombinedBlueprint = shop.towersBlueprintTable[8];
                 break;
             case Bullet.Type.Wind:
-                Debug.Log("WindCombine");
-                Destroy(turret);
-                GameObject _tower1 = (GameObject)Instantiate(buildManager.Towers[0].towersPrefab[1], transform.position, buildManager.Towers[0].towersPrefab[1].transform.rotation);
-                turret = _tower1;
-                turretBlueprint = shop.towersBlueprintTable[5];
-                isCombined = true;
+                fireCombinedBlueprint = shop.towersBlueprintTable[5];
+                windCombinedBlueprint = shop.towersBlueprintTable[1];
+                earthCombinedBlueprint = shop.towersBlueprintTable[9];
+                lightningCombinedBlueprint = shop.towersBlueprintTable[10];
+                waterCombinedBlueprint = shop.towersBlueprintTable[11];
                 break;
             case Bullet.Type.Lightning:
-                Destroy(turret);
-                GameObject _tower2 = (GameObject)Instantiate(buildManager.Towers[0].towersPrefab[2], transform.position, buildManager.Towers[0].towersPrefab[2].transform.rotation);
-                turret = _tower2;
-                turretBlueprint = shop.towersBlueprintTable[5];
-                isCombined = true;
+                fireCombinedBlueprint = shop.towersBlueprintTable[6];
+                windCombinedBlueprint = shop.towersBlueprintTable[9];
+                earthCombinedBlueprint = shop.towersBlueprintTable[2];
+                lightningCombinedBlueprint = shop.towersBlueprintTable[12];
+                waterCombinedBlueprint = shop.towersBlueprintTable[13];
                 break;
             case Bullet.Type.Earth:
+                fireCombinedBlueprint = shop.towersBlueprintTable[7];
+                windCombinedBlueprint = shop.towersBlueprintTable[10];
+                earthCombinedBlueprint = shop.towersBlueprintTable[12];
+                lightningCombinedBlueprint = shop.towersBlueprintTable[3];
+                waterCombinedBlueprint = shop.towersBlueprintTable[14];
                 break;
             case Bullet.Type.Water:
+                fireCombinedBlueprint = shop.towersBlueprintTable[8];
+                windCombinedBlueprint = shop.towersBlueprintTable[11];
+                earthCombinedBlueprint = shop.towersBlueprintTable[13];
+                lightningCombinedBlueprint = shop.towersBlueprintTable[14];
+                waterCombinedBlueprint = shop.towersBlueprintTable[4];
+
                 break;
 
             default:
                 System.Console.WriteLine("Default case");
                 break;
         }
-    }
-    public void CombineWind()
-    {
+
 
     }
-    public void CombineLightning()
-    {
 
-    }
-    public void CombineEarth()
+    public void Combine(TurretBlueprint combinedTurret)
     {
-
-    }
-    public void CombineWater()
-    {
-
+        if (CanCombine(combinedTurret.cost))
+        {
+            Destroy(turret);
+            buildManager.BuildTurret(combinedTurret, this);
+            isCombined = true;
+        }
+        else
+            Debug.Log("Can't combine");
     }
     public bool CanUpgrade()
     {
-        int upgradeCost = (int)(turretBlueprint.cost * 1.2f);
-        if (LevelStatus.Money < upgradeCost)
+        if(turretBlueprint != null)
         {
-            return false;
+            int upgradeCost = (int)(turretBlueprint.cost * 1.2f);
+            if (LevelStatus.Money < upgradeCost)
+            {
+                return false;
+            }
+            else
+                return true;
         }
-        else
-            return true;
+        return false;
+    }
+
+    public bool CanCombine(float combineCost)
+    {
+        if (turretBlueprint != null)
+        {
+            if (LevelStatus.Money < combineCost)
+            {
+                return false;
+            }
+            else
+               return true;
+        }
+        return false;
     }
 
     //Sell Turret
@@ -176,12 +220,16 @@ public class Node : MonoBehaviour
 
     void OnMouseEnter()
     {
+        shop = Resources.FindObjectsOfTypeAll<Shop>()[0];
         Debug.Log(buildManager.GetTurretToBuild() == null);
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
-
+        if(turret != null)
+        {
+            SetCombinedPossibilities();
+        }
             rend.material.color = hoverColor;
     
         if(turret != null && !buildManager.nodeUI.isUiActive)
@@ -196,7 +244,6 @@ public class Node : MonoBehaviour
         pop.Hide();
         rend.material.color = startColor;
     }
-
     // Update is called once per frame
     void Update()
     {

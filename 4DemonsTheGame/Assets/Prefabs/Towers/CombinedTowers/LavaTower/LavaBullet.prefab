@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4387356389300259438}
   - component: {fileID: 7197908043235686548}
   - component: {fileID: 451249781480855301}
+  - component: {fileID: 4456028333922962773}
   m_Layer: 0
-  m_Name: FireBullet
+  m_Name: LavaBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6be5baf5382f0b24b81f1eb3ecc4d1d2, type: 3}
-  m_Color: {r: 1, g: 0.6417511, b: 0, a: 1}
+  m_Color: {r: 0.5754717, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &4387356389300259438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,13 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f3a2e691567ae43a4b20e78f717e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 0
+  explosionRadius: 2
   rotationSpeed: 1000
   speed: 10
-  bulletDamage: 75
-  bulletType: 0
+  bulletDamage: 50
+  bulletType: 7
   bulletEffect: 0
-  explosionPrefab: {fileID: 8854558595620526229, guid: ee76a5ad281f48c4683704860fed87fb,
+  explosionPrefab: {fileID: 8854558595620526229, guid: 08caa74d92b436b4da8b6383531aad02,
     type: 3}
   myTower: {fileID: 0}
 --- !u!50 &7197908043235686548
@@ -140,3 +141,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.23
+--- !u!95 &4456028333922962773
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387356389300259439}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c904716fc3d0764a800a05e86fd5bd8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

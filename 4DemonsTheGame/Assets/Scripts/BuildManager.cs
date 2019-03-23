@@ -74,9 +74,17 @@ public class BuildManager : MonoBehaviour
     }
     public void BuildTurret(TurretBlueprint blueprint, Node node) //called from shop
     {
-        LevelStatus.Money -= blueprint.cost;//deduct money         
-        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, node.transform.position, blueprint.prefab.transform.rotation); //instanciate the tower
-        //_turret.transform.localEulerAngles = new Vector3(0, 0, 0);       
+        LevelStatus.Money -= blueprint.cost;//deduct money
+        if(node == null) {
+            Debug.Log("node is null");
+        }
+        else Debug.Log("canbuild");
+        if (blueprint.prefab == null)
+        {
+            Debug.Log("blueprint is null");
+        }
+        else Debug.Log("canbuild");
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, node.transform.position, blueprint.prefab.transform.rotation); //instanciate the tower     
         node.turret =  _turret; // build the turret
         node.turretBlueprint = blueprint;
         DeselectNode(); //deselect the node
