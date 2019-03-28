@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 140842498}
   - component: {fileID: 140842497}
   - component: {fileID: 140842496}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 1433697600}
   - component: {fileID: 1433697602}
   - component: {fileID: 1433697601}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: HpBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1535664045}
   - component: {fileID: 1535664044}
   - component: {fileID: 1535664043}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1587085946}
   - component: {fileID: 1587085945}
   - component: {fileID: 1587085944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NormalElves
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -380,10 +380,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  enemyParticles: {fileID: 2384056106045530226, guid: c46785943f8e06f47b7830806df9d52d,
-    type: 3}
   souls: 12
   hp: 80
+  enemyStatus: 0
+  enemyParticles: {fileID: 2384056106045530226, guid: c46785943f8e06f47b7830806df9d52d,
+    type: 3}
   hpBar: {fileID: 140842496}
 --- !u!114 &1587085944
 MonoBehaviour:

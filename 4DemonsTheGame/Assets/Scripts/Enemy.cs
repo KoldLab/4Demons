@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
     public int souls = 10;
     public float hp = 100;
     public Status enemyStatus;
-    
+
+    [Space]
     [Header("Unity Stuff")]
     public GameObject enemyParticles;
     public Image hpBar;
@@ -36,6 +37,8 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+
+
 
     void Die()
     {

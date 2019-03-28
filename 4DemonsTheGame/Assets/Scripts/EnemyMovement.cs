@@ -9,27 +9,48 @@ public class EnemyMovement : MonoBehaviour
     public GameObject endPoint;
 
     private Enemy enemy;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         enemy = GetComponent<Enemy>();
-
         target = endPoint.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = target.position - transform.position; //creer un vecteur de notre position vers la position a aller... transform.position donne notre position
-        transform.Translate(direction.normalized * enemy.speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, target.position) <= 0.2f)
+        if(player != null)
         {
-            EndPath();
+
         }
+        else
+        {
+            Vector2 direction = target.position - transform.position; //creer un vecteur de notre position vers la position a aller... transform.position donne notre position
+            transform.Translate(direction.normalized * enemy.speed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, target.position) <= 0.2f)
+            {
+                EndPath();
+            }
+        }
+        
         //il faut bouger avec cette direction et on le normalize pour avoir une vitesse de 1 qu'on multipliera par notre vitesse. Time.detaTime sert a ne pas dependre des frames
         // Space.world veut dire le vecteur est dans quel espace
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Player")
+        {
+            Debug.Log("Player hit");
+            player = collider.gameObject;
+            //Destroy(collider.gameObject);
+        }
+
+        return;
+    }
+
 
     void EndPath()
     {

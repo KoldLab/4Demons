@@ -6,6 +6,7 @@ public class CompleteLevel : MonoBehaviour
 {
     public SceneFade sceneFader;
     public GameObject uiCanvas;
+    public Player player;
 
     public string mainMenuName = "Menu";
 
@@ -15,7 +16,8 @@ public class CompleteLevel : MonoBehaviour
 
     public void Continue()
     {
-        PlayerPrefs.SetInt("levelReached", levelToUnlock);
+        player.level = levelToUnlock;
+        player.Save();
         sceneFader.FadeTo(nextLevel);
     }
 

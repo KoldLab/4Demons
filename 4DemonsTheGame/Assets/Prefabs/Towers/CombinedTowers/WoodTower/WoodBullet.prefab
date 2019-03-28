@@ -95,11 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f3a2e691567ae43a4b20e78f717e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 0
+  explosionRadius: 2
   rotationSpeed: 1000
   speed: 10
   bulletDamage: 50
-  bulletType: 4
+  bulletType: 14
   bulletEffect: 4
   explosionPrefab: {fileID: 8854558595620526229, guid: a50b9cddf9e62c44a98b5d052450fca7,
     type: 3}

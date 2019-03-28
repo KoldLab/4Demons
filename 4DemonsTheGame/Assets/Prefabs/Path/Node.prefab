@@ -101,12 +101,37 @@ MonoBehaviour:
     cost: 0
     upgradedPrefab: {fileID: 0}
     upgradeCost: 0
+  fireCombinedBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  windCombinedBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  lightningCombinedBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  earthCombinedBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  waterCombinedBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
   isUpgraded: 0
+  isUpgradable: 1
   isCombined: 0
+  upgradeCost: 1.2
   pop: {fileID: 0}
-  shopGameObject: {fileID: 35385229429588310, guid: 451738ffbbd1c9648a8e7c2ad4f6e41b,
-    type: 3}
-  shop: {fileID: 35385229429588304, guid: 451738ffbbd1c9648a8e7c2ad4f6e41b, type: 3}
+  shop: {fileID: 0}
 --- !u!61 &4737538196061840741
 BoxCollider2D:
   m_ObjectHideFlags: 0

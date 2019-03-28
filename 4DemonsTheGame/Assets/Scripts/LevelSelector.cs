@@ -7,9 +7,13 @@ public class LevelSelector : MonoBehaviour
     public Button[] levelButtons;
     public SceneFade fader;
 
+    public Player player;
+
     private void Start()
     {
-        int levelReached = PlayerPrefs.GetInt("levelReached", 1);
+        player.Load();
+
+        int levelReached = player.level;
 
         Time.timeScale = 1;
         for (int i = 0; i < levelButtons.Length; i++)

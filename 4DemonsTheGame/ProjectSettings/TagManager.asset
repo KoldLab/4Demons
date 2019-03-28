@@ -14,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: backgroundParticles
+    uniqueID: 3841562953
+    locked: 0
   - name: Towers
     uniqueID: 103835735
     locked: 0
@@ -52,5 +55,8 @@ TagManager:
     uniqueID: 1831083729
     locked: 0
   - name: UI
-    uniqueID: 3841562953
+    uniqueID: 2457620093
+    locked: 0
+  - name: SceneFader
+    uniqueID: 2932300881
     locked: 0

@@ -42,8 +42,8 @@ public class NodeUI : MonoBehaviour
         {
             combineFireCost.text = target.fireCombinedBlueprint.cost + "$";
             combineWindCost.text = target.windCombinedBlueprint.cost + "$";
-            combineLightningCost.text = target.lightningCombinedBlueprint.cost + "$";
-            combineEarthCost.text = target.earthCombinedBlueprint.cost + "$";
+            combineLightningCost.text = target.earthCombinedBlueprint.cost + "$";
+            combineEarthCost.text = target.lightningCombinedBlueprint.cost + "$";
             combineWaterCost.text = target.waterCombinedBlueprint.cost + "$";
         }
 
@@ -58,7 +58,7 @@ public class NodeUI : MonoBehaviour
         {
             upgradeCost.text = "MAX";
             upgradeButton.interactable = false;
-            sell.text = target.turretBlueprint.GetUpgradedSellAmount() + "$"; 
+            sell.text = target.turretBlueprint.GetSellAmount() + "$"; 
         }     
     }
 
@@ -82,11 +82,7 @@ public class NodeUI : MonoBehaviour
 
     public void Upgrade(string type)
     {
-        if (target.CanUpgrade())
-        {
-            target.UpgradeTurret(type); //this node upgradeturret
-
-        }
+        target.UpgradeTurret(type); //this node upgradeturret
         BuildManager.instance.DeselectNode();
     }
 
@@ -105,15 +101,14 @@ public class NodeUI : MonoBehaviour
     {
         if (target != null)
         {
-            if (!target.CanUpgrade() && !target.isUpgraded)
+            if (!target.isUpgradable && !target.isUpgraded)
             {
-                upgradeCost.color = Color.red;
-                upgradeButton.interactable = false;               
+                upgradeCost.color = Color.red;             
             }
             else
             {
-                upgradeCost.color = Color.white;
-                upgradeButton.interactable = true;              
+
+                upgradeCost.color = Color.white;              
             }
             
         }

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionRadius: 2
   rotationSpeed: 1000
-  speed: 10
+  speed: 7
   bulletDamage: 45
   bulletType: 3
   bulletEffect: 3
