@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public int level = 1;
     public int timeLessSouls = 0;
 
+    public GameObject demon;
+
     public void Save()
     {
         SaveSystem.SavePlayer(this);
@@ -14,7 +16,6 @@ public class Player : MonoBehaviour
     public void Load()
     {
         PlayerData data = SaveSystem.LoadPlayer();
-
         level = data.level;
         timeLessSouls = data.timeLessSouls;       
     }

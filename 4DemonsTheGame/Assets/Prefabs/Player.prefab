@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   timeLessSouls: 0
+  demon: {fileID: 1546150991393190056, guid: 5f1bc9c72e7b318419dd6958bb995de6, type: 3}

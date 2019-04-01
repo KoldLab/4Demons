@@ -319,7 +319,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1831083729
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d4829458c7308694abc38be88ed7874e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -382,7 +382,12 @@ MonoBehaviour:
   speed: 2
   souls: 10
   hp: 100
+  damage: 3
+  attackRange: 1
   enemyStatus: 0
+  isKnockedBack: 0
+  isAfterPlayer: 0
+  player: {fileID: 0}
   enemyParticles: {fileID: 2384056106045530226, guid: c46785943f8e06f47b7830806df9d52d,
     type: 3}
   hpBar: {fileID: 1695885671}
@@ -400,3 +405,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endPoint: {fileID: 2155563031329887996, guid: 4d35a0af692e670428ed2d0515ac7a0c,
     type: 3}
+  enemy: {fileID: 2045099974782071138}

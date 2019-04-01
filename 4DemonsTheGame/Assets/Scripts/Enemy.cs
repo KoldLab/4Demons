@@ -6,14 +6,22 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
 
-    [Header("Stats")]
+    [Header("Enemy attributes :")]
     public float speed = 5.0f;
     public int souls = 10;
     public float hp = 100;
-    public Status enemyStatus;
+    public float damage;
+    public float attackRange;
 
     [Space]
-    [Header("Unity Stuff")]
+    [Header("Enemy Status :")]
+    public Status enemyStatus;
+    public bool isKnockedBack;
+    public bool isAfterPlayer;
+    public GameObject player;
+
+    [Space]
+    [Header("Unity Stuff :")]
     public GameObject enemyParticles;
     public Image hpBar;
     private float startingHp;
@@ -24,6 +32,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         startingHp = hp;
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     public void TakeDamage(float amount)
@@ -39,10 +48,11 @@ public class Enemy : MonoBehaviour
     }
 
 
-
     void Die()
     {
         isDead = true;
+        isAfterPlayer = false;
+        player.GetComponent<Demon>().enemyHandled--;
         GameObject effect = (GameObject)Instantiate(enemyParticles, new Vector2(transform.position.x, transform.position.y + 0.35f), transform.rotation);
         Destroy(effect, 1.08f);
         WaveSpawner.EnemiesLeft--;

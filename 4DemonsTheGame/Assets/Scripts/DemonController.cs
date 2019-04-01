@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class DemonController : MonoBehaviour
 {
     [Header("Character attributes:")]
-    public float MOVEMENT_BASE_SPEED = 1f;
+    public float speed;
 
     [Space]
     [Header("Character statistics:")]
@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
 
     [Space]
     [Header("References:")]
-    public Rigidbody2D rb;
-    public Animator demonAnimator;
+    private Rigidbody2D rb;
+    private Animator demonAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        demonAnimator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -40,11 +41,27 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = movementDirection * movementSpeed * MOVEMENT_BASE_SPEED;
+        rb.velocity = movementDirection * movementSpeed * speed;
     }
 
     void Animate()
     {
-        demonAnimator.SetFloat("Horizontal", movementDirection.x);
+        if(movementDirection.x != 0 || movementDirection.y != 0)
+        {
+            if(movementDirection.x < 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if(movementDirection.x > 0)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            demonAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            demonAnimator.SetBool("isRunning", false);
+        }
+        
     }
 }

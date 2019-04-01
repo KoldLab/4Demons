@@ -12,6 +12,11 @@ public class GameController : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject levelWonUI;
 
+    public Transform spawnPoint;
+
+    public Player player;
+    public GameObject demon;
+
     public string mainMenuName = "Menu";
 
     void Awake()
@@ -27,6 +32,7 @@ public class GameController : MonoBehaviour
     void Start()
     {         
         GameIsOver = false;
+        demon = (GameObject)Instantiate(player.demon, new Vector2(spawnPoint.position.x, spawnPoint.position.y), spawnPoint.rotation);
     }
 
     // Update is called once per frame
@@ -39,7 +45,11 @@ public class GameController : MonoBehaviour
         if(LevelStatus.LifePoint <= 0)
         {
             EndGame();
-        }        
+        }
+        if (Demon.IsDead)
+        {
+            EndGame();
+        }
     }
 
     public void EndGame()
