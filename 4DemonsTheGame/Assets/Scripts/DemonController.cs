@@ -26,14 +26,14 @@ public class DemonController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        ProcessInputs();
-        Move();
-        Animate();
+    {              
+            ProcessInputs();
+            Move();
+     
     }
 
     void ProcessInputs()
-    {
+    {        
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         movementSpeed = Mathf.Clamp(movementDirection.magnitude, 0.0f, 1.0f);
         movementDirection.Normalize(); 
@@ -41,7 +41,16 @@ public class DemonController : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = movementDirection * movementSpeed * speed;
+        if (GetComponent<Demon>().isAttacking)
+        {
+            rb.velocity = movementDirection * movementSpeed * 0;
+        }
+        else
+        {
+            rb.velocity = movementDirection * movementSpeed * speed;
+            Animate();
+        }
+        
     }
 
     void Animate()

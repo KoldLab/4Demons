@@ -6,6 +6,7 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
     private bool doMovement = true;
+    private bool playerNotFound = true;
     public float panSpeed = 30f;
     public float panBorderThickness = 10f;
     public float droite = 4.6f;
@@ -13,7 +14,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     public void switchCamMovement()
@@ -28,7 +29,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
         //bloquer la camera
         if (GameController.GameIsOver)
         {
@@ -54,5 +55,10 @@ public class CameraController : MonoBehaviour
 
 
 
+    }
+
+    public void FollowPlayer()
+    {
+        GetComponent<CinemachineVirtualCamera>().Follow = GameObject.FindWithTag("Player").transform;
     }
 }

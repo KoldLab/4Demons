@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using System;
 
 public class Bullet : MonoBehaviour
 {
@@ -172,14 +171,13 @@ public class Bullet : MonoBehaviour
                 {
                     yield break;
                 }
-                enemy.GetComponent<Enemy>().TakeDamage(damage / 10f);
-                enemy.GetComponent<Renderer>().material.color = Color.red;
+                enemy.GetComponent<Enemy>().TakeDamage(damage / 10f);                
                 yield return new WaitForSecondsRealtime(.1f);
                 
                 
                 
             }
-            enemy.GetComponent<Renderer>().material.color = Color.white;
+            
         }
         if (!combo)
         {
@@ -227,14 +225,14 @@ public class Bullet : MonoBehaviour
             }
             e.speed /= slow;
             e.enemyStatus = status;
-            enemy.GetComponent<Renderer>().material.color = Color.blue;
+            
             yield return new WaitForSecondsRealtime(.5f);
             if (e == null)
             {
                 yield break;
             }
             e.speed *= slow;
-            enemy.GetComponent<Renderer>().material.color = Color.white;
+            
 
         }
         if (!combo)
@@ -280,7 +278,7 @@ public class Bullet : MonoBehaviour
             }
             e.speed = 0;
             e.enemyStatus = status;
-            enemy.GetComponent<Renderer>().material.color = Color.yellow;          
+                    
             yield return new WaitForSecondsRealtime(stunnedTime);
             if (e == null)
             {
@@ -288,7 +286,7 @@ public class Bullet : MonoBehaviour
             }
             e.speed = originalSpeed;
             e.enemyStatus = Enemy.Status.Normal;
-            enemy.GetComponent<Renderer>().material.color = Color.white;
+            
         
 
         if (!combo)
@@ -440,7 +438,7 @@ public class Bullet : MonoBehaviour
         }
         e.speed = 0;
         e.enemyStatus = status;
-        enemy.GetComponent<Renderer>().material.color = Color.yellow;
+        
         yield return new WaitForSecondsRealtime(stunnedTime);
         for (int i = 0; i < 5; i++)
         {
@@ -453,9 +451,7 @@ public class Bullet : MonoBehaviour
             yield break;
         }
         e.speed = originalSpeed;
-        e.enemyStatus = Enemy.Status.Normal;
-        enemy.GetComponent<Renderer>().material.color = Color.white;
-
+        e.enemyStatus = Enemy.Status.Normal;       
         Destroy(gameObject);
     }
 

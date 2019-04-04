@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float hp = 100;
     public float damage;
     public float attackRange;
+    public float attackSpeed;
 
     [Space]
     [Header("Enemy Status :")]
@@ -19,32 +20,57 @@ public class Enemy : MonoBehaviour
     public bool isKnockedBack;
     public bool isAfterPlayer;
     public GameObject player;
+    public bool canAttack = false;
+    public float timeBtwAttack;
 
     [Space]
     [Header("Unity Stuff :")]
     public GameObject enemyParticles;
     public Image hpBar;
+    public Animator anim;
     private float startingHp;
     private bool isDead = false;
     public enum Status {Normal, Burned, PushedBack, Slowed, Stunned, Scorched, LightningFire, Lava, Boil, Swift, Sand, Ice, Explosion, Storm, Wood }
+    private bool isCoroutineExecuting = false;
+    public GameObject blood;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        timeBtwAttack = 1 / attackSpeed;
         startingHp = hp;
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(float amount)
     {
         hp -= amount;
-
+        GameObject _blood = (GameObject)Instantiate(blood, transform.position, transform.rotation);
+        Destroy(_blood, 2);
         hpBar.fillAmount = hp/startingHp;
 
         if (hp <= 0 && !isDead)
         {
             Die();
         }
+    }
+
+    IEnumerator Attack()
+    {
+        if (isCoroutineExecuting)
+        {
+            yield break;
+        }
+        isCoroutineExecuting = true;
+        anim.SetTrigger("attack");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length/2);
+        player.GetComponent<Demon>().TakeDamage(damage);
+        timeBtwAttack = attackSpeed;          
+        Debug.Log("Enemy Attack!");
+        canAttack = false;
+        isCoroutineExecuting = false;
     }
 
 
@@ -64,6 +90,22 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (isAfterPlayer && canAttack)
+        {
+            if(Vector2.Distance(transform.position, player.transform.position) <= attackRange)
+            {
+               StartCoroutine(Attack());
+            }
+        }
+        
+        if(timeBtwAttack <= 0)
+        {
+            canAttack = true;
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;           
+        }
+
     }
 }

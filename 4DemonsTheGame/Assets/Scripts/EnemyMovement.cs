@@ -7,8 +7,9 @@ public class EnemyMovement : MonoBehaviour
 {
     private Transform target;
     public GameObject endPoint;
-
+    public Rigidbody2D rb;
     public Enemy enemy;
+    public float direction;
     
 
     
@@ -18,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
         enemy.isKnockedBack = false;
         enemy.isAfterPlayer = false;
         enemy = GetComponent<Enemy>();
+        rb = GetComponent<Rigidbody2D>();
         target = endPoint.transform;
         
     }
@@ -25,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemy.anim.SetFloat("movementSpeed", enemy.speed);
         if((enemy.player.GetComponent<Demon>().enemyHandled) < (enemy.player.GetComponent<Demon>().enemyThatDemonCanHandle)){
             if (!enemy.isAfterPlayer)
             {
@@ -39,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
+            enemy.anim.SetBool("isRunning", true);
             transform.position = Vector2.MoveTowards(transform.position, target.position, enemy.speed * Time.deltaTime);
         }
 
@@ -54,47 +58,25 @@ public class EnemyMovement : MonoBehaviour
 
     void followPlayer()
     {
-        if(Vector2.Distance(transform.position, enemy.player.transform.position) > enemy.attackRange)
+        if(Vector2.Distance(transform.position, enemy.player.transform.position) > enemy.attackRange) //if not in attack range, runs towards player
         {
+            enemy.anim.SetBool("isRunning", true);
             transform.position = Vector2.MoveTowards(transform.position, enemy.player.transform.position, enemy.speed * Time.deltaTime);
-        }
-        
-        
-    }
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.tag == "Player")
-        {
-                                  
-            Debug.Log("Player hit");
-            enemy.player = collider.gameObject;
-
-            //collider.gameObject.GetComponent<Demon>().takeDamage(enemy.damage);
-            //StartCoroutine(KnockBack());
-            //Destroy(collider.gameObject);
-        }
-
-        return;
-    }
-
-    public IEnumerator KnockBack()
-    {
-        enemy.isKnockedBack = true;
-        for (int i = 0; i < 5; i++)
-        {
-            if (this == null)
+            if(transform.position.x > enemy.player.transform.position.x) //check if enemy is on the right of the player or left
             {
-                yield break;
+                transform.eulerAngles = new Vector3(0, 180, 0); 
             }
-            Vector2 moveTo = new Vector2(transform.position.x - 0.5f, transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, moveTo, enemy.speed * Time.deltaTime);
-
-            yield return null;
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
-
-        enemy.isKnockedBack = false;
+        else
+            enemy.anim.SetBool("isRunning", false);
+        
+        
     }
-
+       
     void EndPath()
     {
         LevelStatus.LifePoint--;

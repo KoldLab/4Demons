@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Demon : MonoBehaviour
-{
-    public float timeBtwAttack;
-    
-
+{    
     public Transform attackPos;
     public LayerMask whatIsEnemies;
     public Animator attackAnim;
@@ -15,6 +12,7 @@ public class Demon : MonoBehaviour
     [Header("Demon status :")]
     public static bool IsDead;
     public int enemyHandled;
+    private float timeBtwAttack;
     [Space]
     [Header("Demon attributes :")]
     public float attackSpeed;
@@ -22,10 +20,15 @@ public class Demon : MonoBehaviour
     public int damage;
     public float healthPoints;
     public int enemyThatDemonCanHandle = 3;
+    public float defense;
+    public float hpRegenBy2Seconds;
     [Space]
     [Header("Unity Stuff :")]   
     public Image hpBar;
     private float startingHp;
+    private bool isCoroutineExecuting = false;
+    public GameObject blood;
+    public bool isAttacking = false;
 
 
 
@@ -35,11 +38,14 @@ public class Demon : MonoBehaviour
         enemyHandled = 0;
         IsDead = false;
         startingHp = healthPoints;
+        attackAnim.SetFloat("attackSpeed", attackSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        Regenaration();
         
         if (Input.GetKeyDown(KeyCode.Space)){ //attack
             if (timeBtwAttack == 0)
@@ -62,24 +68,45 @@ public class Demon : MonoBehaviour
 
     private IEnumerator Attack(float startTimeBtwAttack)
     {
-        
-        timeBtwAttack = startTimeBtwAttack;
-        attackAnim.SetFloat("attackSpeed", attackSpeed);
+        if (isCoroutineExecuting)
+        {
+            yield break;
+        }
+        isCoroutineExecuting = true;
+        timeBtwAttack = startTimeBtwAttack;       
         attackAnim.SetTrigger("attack");
+        isAttacking = true;
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
         for (int i = 0; i < enemiesToDamage.Length; i++)
-        {
-            enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
-
+        {           
+           enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);                            
         }
+        
         yield return new WaitForSeconds(startTimeBtwAttack);
+        isAttacking = false;
+        isCoroutineExecuting = false;
         timeBtwAttack = 0;
     }
 
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
-        Debug.Log(damage);
-        healthPoints -= damage;
+        float realDamage = damage - defense;
+        if(realDamage < 0)
+        {
+            realDamage = 0;
+        }
+        healthPoints -= realDamage;
+        GameObject _blood = (GameObject)Instantiate(blood, transform.position, transform.rotation);
+        Destroy(_blood, 2);
         hpBar.fillAmount = healthPoints / startingHp;
+    }
+
+    public void Regenaration()
+    {
+        if(healthPoints < startingHp)
+        {
+            healthPoints += hpRegenBy2Seconds * Time.deltaTime * 0.5f;
+            hpBar.fillAmount = healthPoints / startingHp;
+        }
     }
 }

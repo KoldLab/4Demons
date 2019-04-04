@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public Transform spawnPoint;
 
     public Player player;
+    public CameraController cam;
     public GameObject demon;
 
     public string mainMenuName = "Menu";
@@ -33,6 +34,8 @@ public class GameController : MonoBehaviour
     {         
         GameIsOver = false;
         demon = (GameObject)Instantiate(player.demon, new Vector2(spawnPoint.position.x, spawnPoint.position.y), spawnPoint.rotation);
+        demon.name = "Demon";
+        cam.FollowPlayer();
     }
 
     // Update is called once per frame
