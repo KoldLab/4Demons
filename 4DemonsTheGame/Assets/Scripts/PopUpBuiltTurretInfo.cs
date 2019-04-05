@@ -21,10 +21,10 @@ public class PopUpBuiltTurretInfo : MonoBehaviour
 
         transform.position = new Vector2(target.transform.position.x, (target.transform.position.y + 0.10f));
         rangeCircle.transform.position = new Vector2(target.transform.position.x, (target.transform.position.y));
-        rangeCircle.transform.localScale += new Vector3(_target.turret.GetComponent<Turret>().range, _target.turret.GetComponent<Turret>().range, 0); popUpUi.SetActive(true);
+        rangeCircle.transform.localScale = new Vector3(_target.turret.GetComponent<Turret>().range * 2, _target.turret.GetComponent<Turret>().range * 2, 0); popUpUi.SetActive(true);
         rangeCircle.SetActive(true);
 
-            damage.text = (_target.turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletDamage * _target.turret.GetComponent<Turret>().damageBoost).ToString();
+            damage.text = (_target.turret.GetComponent<Turret>().damage * _target.turret.GetComponent<Turret>().damageBoost).ToString();
             range.text = _target.turret.GetComponent<Turret>().range.ToString();
             speed.text = _target.turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().speed.ToString();
                

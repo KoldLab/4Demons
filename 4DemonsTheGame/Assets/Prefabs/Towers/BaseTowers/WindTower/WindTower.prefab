@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 103835735
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 22fa41fb469b1d34ca23aa88506f9652, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,7 +97,9 @@ MonoBehaviour:
   range: 5
   fireRate: 0
   damageBoost: 1
-  startTimeBtwShots: 1
+  damage: 25
+  cost: 85
+  startTimeBtwShots: 1.5
   closestEnemy: 0
   farthestEnemy: 0
   firstEnemy: 1

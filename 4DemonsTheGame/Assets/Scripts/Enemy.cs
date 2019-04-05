@@ -60,14 +60,14 @@ public class Enemy : MonoBehaviour
     IEnumerator Attack()
     {
         if (isCoroutineExecuting)
-        {
+        {   
             yield break;
         }
         isCoroutineExecuting = true;
         anim.SetTrigger("attack");
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length/2);
+        yield return new WaitForSeconds(1/attackSpeed);
         player.GetComponent<Demon>().TakeDamage(damage);
-        timeBtwAttack = attackSpeed;          
+        timeBtwAttack = 1 / attackSpeed;          
         Debug.Log("Enemy Attack!");
         canAttack = false;
         isCoroutineExecuting = false;

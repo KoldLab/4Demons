@@ -449,11 +449,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  souls: 10
-  hp: 100
+  souls: 13
+  hp: 400
   damage: 2
   attackRange: 0.5
-  attackSpeed: 2
+  attackSpeed: 1
   enemyStatus: 0
   isKnockedBack: 0
   isAfterPlayer: 0

@@ -14,6 +14,7 @@ public class Turret : MonoBehaviour
     public float range = 5f;
     public float fireRate;
     public float damageBoost = 1f;
+    public float damage;
     public float cost;
     public float startTimeBtwShots;
     public bool closestEnemy = true;
@@ -30,7 +31,7 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.1f/Time.timeScale);       
+      
     }
 
     void UpdateTarget()
@@ -109,26 +110,23 @@ public class Turret : MonoBehaviour
 
     void FirstEnemy(GameObject[] enemies)
     {
-
-        foreach (GameObject enemy in enemies) //on trouve tous les enemy si on trouve un enemy + proche, on switch target
+        if(enemies.Length > 0)
         {
-            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy <= range)
+            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(transform.position, range, LayerMask.GetMask("Enemy"));
+
+            if (enemiesToDamage.Length > 0)
             {
-                target = enemy.transform;
-                break;
-            }
-            else
-            {
-                target = null;
+                target = enemiesToDamage[0].transform;
             }
         }
+        
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UpdateTarget();
         //firing
         if (fireRate <= 0f)
         {
@@ -137,7 +135,7 @@ public class Turret : MonoBehaviour
                 return;
             }
             Shoot();
-            fireRate = startTimeBtwShots;
+            fireRate = 1 / startTimeBtwShots;
 
         }
         else
