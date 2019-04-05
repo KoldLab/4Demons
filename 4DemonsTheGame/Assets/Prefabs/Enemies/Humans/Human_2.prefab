@@ -291,8 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   souls: 10
-  hp: 100
-  damage: 3
+  hp: 120
+  damage: 7
   attackRange: 1
   attackSpeed: 3
   enemyStatus: 0

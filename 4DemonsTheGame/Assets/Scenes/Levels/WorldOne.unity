@@ -1841,15 +1841,123 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
     count: 0
     counts: 05000000
     rate: 1
   - enemies:
-    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
     count: 0
     counts: 0a000000
     rate: 1.5
+  - enemies:
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 0a000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    count: 0
+    counts: 05000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    count: 0
+    counts: 0a00000005000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    count: 0
+    counts: 0a0000000a000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    count: 0
+    counts: 0f0000000f000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    count: 0
+    counts: 05000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 0500000005000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 050000000a000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 0a0000000f000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 01000000050000000a000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 050000000a0000000f000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 080000000f00000014000000
+    rate: 1.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 0a0000001400000014000000
+    rate: 2
+  - enemies:
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 32000000
+    rate: 2.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    count: 0
+    counts: 32000000
+    rate: 2.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    count: 0
+    counts: 1e000000
+    rate: 2.5
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    count: 0
+    counts: 140000001400000014000000
+    rate: 3
+  - enemies:
+    - {fileID: 1042168259356489133, guid: f3d1657abd0a9cf459f7bae3d613c771, type: 3}
+    - {fileID: 1042168259356489133, guid: 05e535b0febbda343a9d995c636d70c2, type: 3}
+    - {fileID: 2066308319796425970, guid: 0fba298d41b56724aa9ef44cb7f598be, type: 3}
+    count: 0
+    counts: 320000003200000032000000
+    rate: 3
   spawnPoint: {fileID: 4401248805291512356}
   timeBetweenWaves: 5
   waveCountdownText: {fileID: 1038834470}
@@ -2017,7 +2125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLifePoint: 10
-  startMoney: 400
+  startMoney: 100
   infinityWaves: 0
   soulsAmount: {fileID: 927946941}
   hP: {fileID: 1279580920}
@@ -2260,7 +2368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317474800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.249999, y: 0.47062486, z: -690.1821}
+  m_LocalPosition: {x: -4.250003, y: 0.47062486, z: -690.1821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 233783864}
@@ -3104,7 +3212,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -453404343
+  m_SortingLayerID: -1837347203
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &634084618
@@ -3315,7 +3423,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1837347203
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &717333988
@@ -6516,7 +6624,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -453404343
+  m_SortingLayerID: -1837347203
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1187286753
@@ -11621,6 +11729,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375925807429735135, guid: 1a47d05f069021647a394b75167b0840,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375925807429735135, guid: 1a47d05f069021647a394b75167b0840,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a47d05f069021647a394b75167b0840, type: 3}

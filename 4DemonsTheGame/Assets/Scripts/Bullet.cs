@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
     public float explosionRadius = 0f;
     public float rotationSpeed = 1000f;
     public float speed = 25f;
-    public float bulletDamage = 50f;
     public Type bulletType;
     public Effect bulletEffect;
     public enum Type {Fire, Lightning, Water, Earth, Wind, Scorch,LightningFire,Lava,Boil,Swift,Sand,Ice,Explosion,Storm,Wood};
@@ -20,6 +19,7 @@ public class Bullet : MonoBehaviour
     public GameObject explosionPrefab;
     public Turret myTower; 
     private Transform target;
+    public LayerMask whatIsEnemies;
 
 
     public void Seek(Transform _target)
@@ -36,7 +36,10 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-    }
+
+        whatIsEnemies = LayerMask.GetMask("Enemy");
+
+}
 
     // Update is called once per frame
     void Update()
@@ -72,7 +75,7 @@ public class Bullet : MonoBehaviour
            GameObject bulletExplo = (GameObject)Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
 
           
-                Damage(target,bulletDamage);
+                Damage(target,myTower.damage);
 
 
             gameObject.GetComponent<Renderer>().enabled = false;
@@ -188,7 +191,6 @@ public class Bullet : MonoBehaviour
 
     public void EarthDamage(GameObject enemy, float damage, bool combo)
     {
-        Debug.Log("laved");
         Enemy e = enemy.GetComponent<Enemy>();
         Vector2 center = new Vector3(
                     (transform.position.x),
@@ -196,16 +198,14 @@ public class Bullet : MonoBehaviour
                     );
         float radius = explosionRadius;
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
-        foreach (Collider2D hits in hitColliders)
-        {
 
-            if (hits.transform.tag == "Enemy")
-            {
-                Debug.Log("fdsf");
-                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);                
-            }
+
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(center, radius, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);
         }
+        
         if (!combo)
         {
             Destroy(gameObject);
@@ -329,15 +329,13 @@ public class Bullet : MonoBehaviour
         float radius = explosionRadius;
 
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
-        foreach (Collider2D hits in hitColliders)
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(center, radius, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
         {
-            if (hits.transform.tag == "Enemy")
-            {
-                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-                StartCoroutine(FireDamage(hits.transform.gameObject, damage, status, false));
-            }
+            enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);
+            StartCoroutine(FireDamage(enemiesToDamage[i].transform.gameObject, damage, status, false));
         }
+        
         
                
     }
@@ -376,14 +374,11 @@ public class Bullet : MonoBehaviour
         float radius = explosionRadius;
 
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
-        foreach (Collider2D hits in hitColliders)
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(center, radius, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
         {
-            if (hits.transform.tag == "Enemy")
-            {
-                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-                StartCoroutine(WindDamage(hits.transform.gameObject, damage, status, false));
-            }
+            enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);
+            StartCoroutine(WindDamage(enemiesToDamage[i].transform.gameObject, damage, status, false));
         }
 
 
@@ -411,14 +406,11 @@ public class Bullet : MonoBehaviour
         float radius = explosionRadius;
 
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
-        foreach (Collider2D hits in hitColliders)
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(center, radius, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
         {
-            if (hits.transform.tag == "Enemy")
-            {
-                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-                StartCoroutine(LightningDamage(hits.transform.gameObject, damage, status, false));
-            }
+            enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);
+            StartCoroutine(LightningDamage(enemiesToDamage[i].transform.gameObject, damage, status, false));
         }
 
 
@@ -465,14 +457,11 @@ public class Bullet : MonoBehaviour
         float radius = explosionRadius;
 
 
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
-        foreach (Collider2D hits in hitColliders)
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(center, radius, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
         {
-            if (hits.transform.tag == "Enemy")
-            {
-                hits.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-                StartCoroutine(WaterDamage(hits.transform.gameObject, damage, status, false));
-            }
+            enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);
+            StartCoroutine(WaterDamage(enemiesToDamage[i].transform.gameObject, damage, status, false));
         }
 
 

@@ -75,7 +75,7 @@ public class Shop : MonoBehaviour
         {
             if (i < 5)
             {
-                towersBlueprintTable[i].prefab = buildManager.Towers[i].towersPrefab[i];              
+                towersBlueprintTable[i].prefab = buildManager.Towers[i].towersPrefab[i];               
             }               
             else if (i < 9)
             {
@@ -93,20 +93,20 @@ public class Shop : MonoBehaviour
             {
                 towersBlueprintTable[i].prefab = buildManager.Towers[3].towersPrefab[i - 10];
             }
-            towersBlueprintTable[i].cost = (int)towersBlueprintTable[i].prefab.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletDamage * 2;
+            towersBlueprintTable[i].cost = (int)towersBlueprintTable[i].prefab.GetComponent<Turret>().cost;
 
         }
-        fireTowerCost.text = towersBlueprintTable[0].cost + "$";
-        windTowerCost.text = towersBlueprintTable[1].cost + "$";
-        lightningTowerCost.text = towersBlueprintTable[2].cost + "$";
-        earthTowerCost.text = towersBlueprintTable[3].cost + "$";
-        waterTowerCost.text = towersBlueprintTable[4].cost + "$";
+        fireTowerCost.text = towersBlueprintTable[0].cost + " souls";
+        windTowerCost.text = towersBlueprintTable[1].cost + " souls";
+        lightningTowerCost.text = towersBlueprintTable[2].cost + " souls";
+        earthTowerCost.text = towersBlueprintTable[3].cost + " souls";
+        waterTowerCost.text = towersBlueprintTable[4].cost + " souls";
 
     }
     
     void isPurchasable(Button button, TurretBlueprint _turretBlueprint)
     {
-        if (LevelStatus.Money <= _turretBlueprint.cost)
+        if (LevelStatus.Money < _turretBlueprint.cost)
         {
             button.interactable = false;
         }

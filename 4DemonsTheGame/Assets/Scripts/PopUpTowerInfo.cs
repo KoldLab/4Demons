@@ -29,7 +29,7 @@ public class PopUpTowerInfo : MonoBehaviour
             tower = shop.towersBlueprintTable[0].prefab.GetComponent<Turret>();
             Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
             effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
-            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            damage.text = tower.damage.ToString();
             range.text = tower.range.ToString();
             speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
 
@@ -39,7 +39,7 @@ public class PopUpTowerInfo : MonoBehaviour
             tower = shop.towersBlueprintTable[1].prefab.GetComponent<Turret>();
             Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
             effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
-            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            damage.text = tower.damage.ToString();
             range.text = tower.range.ToString();
             speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
         }
@@ -48,7 +48,7 @@ public class PopUpTowerInfo : MonoBehaviour
             tower = shop.towersBlueprintTable[2].prefab.GetComponent<Turret>();
             Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
             effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
-            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            damage.text = tower.damage.ToString();
             range.text = tower.range.ToString();
             speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
         }
@@ -57,7 +57,7 @@ public class PopUpTowerInfo : MonoBehaviour
             tower = shop.towersBlueprintTable[3].prefab.GetComponent<Turret>();
             Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
             effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
-            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            damage.text = tower.damage.ToString();
             range.text = tower.range.ToString();
             speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
         }
@@ -66,7 +66,7 @@ public class PopUpTowerInfo : MonoBehaviour
             tower = shop.towersBlueprintTable[4].prefab.GetComponent<Turret>();
             Debug.Log("Effect :" + tower.bulletPrefab.GetComponent<Bullet>().bulletEffect);
             effect.text = tower.bulletPrefab.GetComponent<Bullet>().bulletEffect.ToString();
-            damage.text = tower.bulletPrefab.GetComponent<Bullet>().bulletDamage.ToString();
+            damage.text = tower.damage.ToString();
             range.text = tower.range.ToString();
             speed.text = tower.bulletPrefab.GetComponent<Bullet>().speed.ToString();
         }     

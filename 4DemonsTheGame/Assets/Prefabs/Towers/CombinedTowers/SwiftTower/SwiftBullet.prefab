@@ -69,10 +69,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1831083729
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6be5baf5382f0b24b81f1eb3ecc4d1d2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.96079236, g: 1, b: 0.7311321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,9 +97,8 @@ MonoBehaviour:
   explosionRadius: 0
   rotationSpeed: 1000
   speed: 10
-  bulletDamage: 50
   bulletType: 9
-  bulletEffect: 0
+  bulletEffect: 1
   explosionPrefab: {fileID: 8854558595620526229, guid: 24df6b1c19255c342b2ec29a0a8aa2e9,
     type: 3}
   myTower: {fileID: 0}

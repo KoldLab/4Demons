@@ -98,6 +98,7 @@ public class WaveSpawner : MonoBehaviour
 
         }
         LevelStatus.Rounds++;
+        LevelStatus.Money += 100;
     }
         void AddWaves()
         {

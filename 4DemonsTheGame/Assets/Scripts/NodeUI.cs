@@ -40,25 +40,25 @@ public class NodeUI : MonoBehaviour
 
         if (!target.isCombined)
         {
-            combineFireCost.text = target.fireCombinedBlueprint.cost + "$";
-            combineWindCost.text = target.windCombinedBlueprint.cost + "$";
-            combineLightningCost.text = target.earthCombinedBlueprint.cost + "$";
-            combineEarthCost.text = target.lightningCombinedBlueprint.cost + "$";
-            combineWaterCost.text = target.waterCombinedBlueprint.cost + "$";
+            combineFireCost.text = target.fireCombinedBlueprint.cost + " souls";
+            combineWindCost.text = target.windCombinedBlueprint.cost + " souls";
+            combineLightningCost.text = target.lightningCombinedBlueprint.cost + " souls";
+            combineEarthCost.text = target.earthCombinedBlueprint.cost + " souls";
+            combineWaterCost.text = target.waterCombinedBlueprint.cost + " souls";
         }
 
         if (!target.isUpgraded)
         {
-            upgradeCost.text = target.turretBlueprint.cost * 1.2f + "$";
+            upgradeCost.text = target.turretBlueprint.cost * 1.2f + " souls";
             upgradeButton.interactable = true;
-            sell.text = target.turretBlueprint.GetSellAmount() + "$";
+            sell.text = target.turretBlueprint.GetSellAmount() + " souls";
           
         }
         else
         {
             upgradeCost.text = "MAX";
             upgradeButton.interactable = false;
-            sell.text = target.turretBlueprint.GetSellAmount() + "$"; 
+            sell.text = target.turretBlueprint.GetSellAmount() + " souls"; 
         }     
     }
 
