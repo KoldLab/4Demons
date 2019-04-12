@@ -14,10 +14,15 @@ public class CompleteLevel : MonoBehaviour
     public int levelToUnlock = 2;
     // Start is called before the first frame update
 
+
+    private void Start()
+    {
+        player = Player.Instance;
+    }
     public void Continue()
     {
         player.level = levelToUnlock;
-        player.Save();
+        player.Save(player.GetCurrentSavedFile());
         sceneFader.FadeTo(nextLevel);
     }
 

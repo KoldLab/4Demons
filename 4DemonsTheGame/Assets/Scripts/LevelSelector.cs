@@ -11,7 +11,9 @@ public class LevelSelector : MonoBehaviour
 
     private void Start()
     {
-        player.Load();
+
+        player = Player.Instance;
+        Debug.Log("Loaded file : " + player.GetCurrentSavedFile());
 
         int levelReached = player.level;
 

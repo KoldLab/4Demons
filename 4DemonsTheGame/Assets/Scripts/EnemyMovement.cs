@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
                 enemy.isAfterPlayer = true;
             }            
         }
-
+ 
         if (enemy.isAfterPlayer)
         {
             followPlayer();

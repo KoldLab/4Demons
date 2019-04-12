@@ -97,6 +97,11 @@ public class WaveSpawner : MonoBehaviour
 
 
         }
+        while(EnemiesLeft != 0)
+        {
+            yield return null;
+           
+        }
         LevelStatus.Rounds++;
         LevelStatus.Money += 100;
     }

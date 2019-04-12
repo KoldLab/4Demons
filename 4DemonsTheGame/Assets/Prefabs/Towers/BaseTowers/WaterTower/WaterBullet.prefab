@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4387356389300259408}
   - component: {fileID: 4387356389300259409}
-  - component: {fileID: 4387356389300259438}
   - component: {fileID: 7197908043235686548}
   - component: {fileID: 451249781480855301}
+  - component: {fileID: 2368595980861665370}
   m_Layer: 0
   m_Name: WaterBullet
   m_TagString: Untagged
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1831083729
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6be5baf5382f0b24b81f1eb3ecc4d1d2, type: 3}
   m_Color: {r: 0, g: 0.14774561, b: 1, a: 1}
@@ -82,27 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &4387356389300259438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4387356389300259439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f3a2e691567ae43a4b20e78f717e8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionRadius: 0
-  rotationSpeed: 1000
-  speed: 10
-  bulletDamage: 20
-  bulletType: 2
-  bulletEffect: 2
-  explosionPrefab: {fileID: 8854558595620526229, guid: cc7cb847f285f8f4591c447ee4dee008,
-    type: 3}
-  myTower: {fileID: 0}
 --- !u!50 &7197908043235686548
 Rigidbody2D:
   serializedVersion: 4
@@ -140,3 +119,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.23
+--- !u!114 &2368595980861665370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387356389300259439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fc71ea48cfedd4cad8350f08c4bd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1000
+  speed: 10
+  bulletType: 2
+  bulletEffect: 2
+  explosionPrefab: {fileID: 8854558595620526229, guid: cc7cb847f285f8f4591c447ee4dee008,
+    type: 3}
+  myTower: {fileID: 0}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  slow: 0

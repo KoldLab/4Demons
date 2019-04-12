@@ -83,6 +83,7 @@ public class Enemy : MonoBehaviour
         Destroy(effect, 1.08f);
         WaveSpawner.EnemiesLeft--;
         LevelStatus.EnemyKilled++;
+        Player.Instance.enemyKilled++;
         Destroy(gameObject);
         LevelStatus.Money += souls;
     }

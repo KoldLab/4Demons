@@ -97,9 +97,9 @@ MonoBehaviour:
   range: 3
   fireRate: 0
   damageBoost: 1
-  damage: 20
+  damage: 10
   cost: 100
-  startTimeBtwShots: 1
+  startTimeBtwShots: 0.5
   closestEnemy: 0
   farthestEnemy: 0
   firstEnemy: 1

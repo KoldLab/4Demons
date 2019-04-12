@@ -35,11 +35,9 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-
         whatIsEnemies = LayerMask.GetMask("Enemy");
 
-}
+    }
 
     // Update is called once per frame
     void Update()

@@ -72,7 +72,7 @@ public class Node : MonoBehaviour
     //Upgrade Turret
     public void UpgradeTurret(string type)
     {        
-        if(type == turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletType.ToString())
+        if(type == turret.GetComponent<Turret>().bulletPrefab.GetComponent<AbstractBullet>().bulletType.ToString())
         {
             NormalUpgrade();
         }
@@ -166,9 +166,9 @@ public class Node : MonoBehaviour
 
     public void SetCombinedPossibilities()
     {
-        switch (turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().bulletType)
+        switch (turret.GetComponent<Turret>().bulletPrefab.GetComponent<AbstractBullet>().bulletType)
         {
-            case Bullet.Type.Fire:
+            case AbstractBullet.Type.Fire:
                 Debug.Log("fire =" + shop.towersBlueprintTable[0].cost);
                 
                 fireCombinedBlueprint = shop.towersBlueprintTable[0];
@@ -177,28 +177,28 @@ public class Node : MonoBehaviour
                 earthCombinedBlueprint = shop.towersBlueprintTable[7];
                 waterCombinedBlueprint = shop.towersBlueprintTable[8];
                 break;
-            case Bullet.Type.Wind:
+            case AbstractBullet.Type.Wind:
                 fireCombinedBlueprint = shop.towersBlueprintTable[5];
                 windCombinedBlueprint = shop.towersBlueprintTable[1];
                 lightningCombinedBlueprint = shop.towersBlueprintTable[9];
                 earthCombinedBlueprint = shop.towersBlueprintTable[10];
                 waterCombinedBlueprint = shop.towersBlueprintTable[11];
                 break;
-            case Bullet.Type.Lightning:
+            case AbstractBullet.Type.Lightning:
                 fireCombinedBlueprint = shop.towersBlueprintTable[6];
                 windCombinedBlueprint = shop.towersBlueprintTable[9];
                 lightningCombinedBlueprint = shop.towersBlueprintTable[2];
                 earthCombinedBlueprint = shop.towersBlueprintTable[12];
                 waterCombinedBlueprint = shop.towersBlueprintTable[13];
                 break;
-            case Bullet.Type.Earth:
+            case AbstractBullet.Type.Earth:
                 fireCombinedBlueprint = shop.towersBlueprintTable[7];
                 windCombinedBlueprint = shop.towersBlueprintTable[10];
                 lightningCombinedBlueprint = shop.towersBlueprintTable[12];
                 earthCombinedBlueprint = shop.towersBlueprintTable[3];
                 waterCombinedBlueprint = shop.towersBlueprintTable[14];
                 break;
-            case Bullet.Type.Water:
+            case AbstractBullet.Type.Water:
                 fireCombinedBlueprint = shop.towersBlueprintTable[8];
                 windCombinedBlueprint = shop.towersBlueprintTable[11];
                 lightningCombinedBlueprint = shop.towersBlueprintTable[13];
@@ -230,8 +230,8 @@ public class Node : MonoBehaviour
 
     void OnMouseEnter()
     {
+        rend.material.color = hoverColor;
         shop = nodesParent.shop;
-        Debug.Log(shop == null);
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
@@ -239,10 +239,7 @@ public class Node : MonoBehaviour
         if(turret != null)
         {
             SetCombinedPossibilities();
-            Debug.Log("setpod");
-        }
-            rend.material.color = hoverColor;
-    
+        }                
         if(turret != null && !buildManager.nodeUI.isUiActive)
         {
             pop.SetTarget(this);

@@ -26,7 +26,7 @@ public class PopUpBuiltTurretInfo : MonoBehaviour
 
             damage.text = (_target.turret.GetComponent<Turret>().damage * _target.turret.GetComponent<Turret>().damageBoost).ToString();
             range.text = _target.turret.GetComponent<Turret>().range.ToString();
-            speed.text = _target.turret.GetComponent<Turret>().bulletPrefab.GetComponent<Bullet>().speed.ToString();
+            speed.text = _target.turret.GetComponent<Turret>().bulletPrefab.GetComponent<AbstractBullet>().speed.ToString();
                
     }
 

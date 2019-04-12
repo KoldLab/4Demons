@@ -150,7 +150,7 @@ public class Turret : MonoBehaviour
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, bulletPrefab.transform.rotation);
 
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        AbstractBullet bullet = bulletGO.GetComponent<AbstractBullet>();
 
         bullet.myTower = this;
 

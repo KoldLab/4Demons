@@ -31,11 +31,28 @@ public class GameController : MonoBehaviour
     }
     // Start is called before the first frame update
     void Start()
-    {         
+    {
+        player = Player.Instance;
         GameIsOver = false;
-        demon = (GameObject)Instantiate(player.demon, new Vector2(spawnPoint.position.x, spawnPoint.position.y), spawnPoint.rotation);
+        demon = (GameObject)Instantiate(demon, new Vector2(spawnPoint.position.x, spawnPoint.position.y), spawnPoint.rotation);
         demon.name = "Demon";
         cam.FollowPlayer();
+        StartCoroutine(autoSave());
+    }
+
+    IEnumerator autoSave()
+    {
+        for (; ; )
+        {
+            player.Save(player.currentSavedFile);            
+            yield return new WaitForSecondsRealtime(5f);
+        }
+        
+    }
+
+    void Save()
+    {
+        player.Save(player.currentSavedFile);
     }
 
     // Update is called once per frame
@@ -54,6 +71,8 @@ public class GameController : MonoBehaviour
             EndGame();
         }
     }
+
+
 
     public void EndGame()
     {
