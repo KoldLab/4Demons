@@ -49,8 +49,9 @@ public class EnemyMovement : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) <= 0.2f)
         {
             EndPath();
-        }       
-        
+        }
+
+        enemy.distanceToEndPoint = Vector2.Distance(enemy.transform.position, endPoint.transform.position);
         //il faut bouger avec cette direction et on le normalize pour avoir une vitesse de 1 qu'on multipliera par notre vitesse. Time.detaTime sert a ne pas dependre des frames
         // Space.world veut dire le vecteur est dans quel espace
     }

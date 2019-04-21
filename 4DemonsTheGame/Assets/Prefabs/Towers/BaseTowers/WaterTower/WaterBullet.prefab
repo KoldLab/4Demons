@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57fc71ea48cfedd4cad8350f08c4bd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionRadius: 0
   rotationSpeed: 1000
   speed: 10
   bulletType: 2
@@ -141,4 +142,5 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
-  slow: 0
+  b_Collider: {fileID: 0}
+  slow: 5

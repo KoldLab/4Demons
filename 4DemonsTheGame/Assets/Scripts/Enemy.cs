@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Enemy attributes :")]
     public float speed = 5.0f;
+    public float originalSpeed;
     public int souls = 10;
     public float hp = 100;
     public float damage;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     public GameObject player;
     public bool canAttack = false;
     public float timeBtwAttack;
+    public float distanceToEndPoint;
 
     [Space]
     [Header("Unity Stuff :")]
@@ -38,6 +40,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalSpeed = speed;
         timeBtwAttack = 1 / attackSpeed;
         startingHp = hp;
         player = GameObject.FindGameObjectsWithTag("Player")[0];

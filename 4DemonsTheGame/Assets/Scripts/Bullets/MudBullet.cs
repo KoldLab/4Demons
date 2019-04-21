@@ -2,17 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MudBullet : MonoBehaviour
+public class MudBullet : AbstractBullet
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Special bullet Attribute")]
+    public float slow;
+
+    public override IEnumerator bulletSpecialDamage(float damage)
     {
-        
+        Enemy e = target.GetComponent<Enemy>();
+        MudDamage(e, damage);
+        yield return new WaitForSeconds(1f); //wait for the burned time
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MudDamage(Enemy _enemy, float damage)
     {
-        
+        Vector2 center = new Vector3(
+                    (transform.position.x),
+                    (transform.position.y)
+                    );
+        float radius = explosionRadius;
+
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(center, radius, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);
+            StartCoroutine(WaterDamage(enemiesToDamage[i].GetComponent<Enemy>(), slow));
+        }
     }
 }

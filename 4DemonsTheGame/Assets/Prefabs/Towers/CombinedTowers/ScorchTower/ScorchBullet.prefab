@@ -162,3 +162,5 @@ MonoBehaviour:
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 0
+  b_Collider: {fileID: 0}
+  pushBack: 0.2

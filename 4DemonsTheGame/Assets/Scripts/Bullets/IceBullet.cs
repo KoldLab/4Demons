@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceBullet : MonoBehaviour
+public class IceBullet : AbstractBullet
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Special bullet Attribute")]
+    public float pushBack;
+    public float slow;
 
-    // Update is called once per frame
-    void Update()
+
+    public override IEnumerator bulletSpecialDamage(float damage)
     {
-        
+        Enemy e = target.GetComponent<Enemy>();
+        e.TakeDamage(damage);
+
+        Coroutine waterDamage = StartCoroutine(WaterDamage(e, slow));
+        Coroutine windDamage = StartCoroutine(WindDamage(e, pushBack));
+        while (waterDamage != null && windDamage != null)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

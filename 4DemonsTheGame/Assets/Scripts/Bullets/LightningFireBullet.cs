@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class LightningFireBullet : AbstractBullet
 {
+    [Header("Special bullet Attribute")]
+    public float stunnedTime;
+
+
     public override IEnumerator bulletSpecialDamage(float damage)
     {
-        b_Collider.enabled = false;
         Enemy e = target.GetComponent<Enemy>();
         e.TakeDamage(damage);
-        float pushBack = damage / 100f;
-
 
         Coroutine fireDamage = StartCoroutine(FireDamage(e, damage));
-        Coroutine lightningDamage = StartCoroutine(LightningDamage(e, pushBack));
+        Coroutine lightningDamage = StartCoroutine(LightningDamage(e, stunnedTime));
         while (fireDamage != null && lightningDamage != null)
         {
             yield return null;

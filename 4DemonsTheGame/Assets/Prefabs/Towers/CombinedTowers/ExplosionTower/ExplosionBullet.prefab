@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4387356389300259408}
   - component: {fileID: 4387356389300259409}
-  - component: {fileID: 4387356389300259438}
   - component: {fileID: 7197908043235686548}
   - component: {fileID: 451249781480855301}
   - component: {fileID: 4456028333922962773}
+  - component: {fileID: 2301520863764899204}
   m_Layer: 0
   m_Name: ExplosionBullet
   m_TagString: Untagged
@@ -83,29 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &4387356389300259438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4387356389300259439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f3a2e691567ae43a4b20e78f717e8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionRadius: 2
-  rotationSpeed: 1000
-  speed: 10
-  bulletType: 12
-  bulletEffect: 1
-  explosionPrefab: {fileID: 8854558595620526229, guid: 41c2ab141a8a8bd4ca6138103e636576,
-    type: 3}
-  myTower: {fileID: 0}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!50 &7197908043235686548
 Rigidbody2D:
   serializedVersion: 4
@@ -162,3 +139,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2301520863764899204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387356389300259439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df11feef55dec045b103e01090e17ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRadius: 2
+  rotationSpeed: 1000
+  speed: 10
+  bulletType: 12
+  bulletEffect: 0
+  explosionPrefab: {fileID: 8854558595620526229, guid: 41c2ab141a8a8bd4ca6138103e636576,
+    type: 3}
+  myTower: {fileID: 0}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  b_Collider: {fileID: 0}
+  stunnedTime: 0.4

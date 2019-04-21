@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwiftBullet : MonoBehaviour
+public class SwiftBullet : AbstractBullet
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [Header("Special bullet Attribute")]
+    public float stunnedTime;
+    public float pushBack;
+
+    public override IEnumerator bulletSpecialDamage(float damage)
     {
-        
+        Enemy e = target.GetComponent<Enemy>();
+        e.TakeDamage(damage);
+
+        Coroutine lightningDamage = StartCoroutine(LightningDamage(e, stunnedTime));
+        Coroutine windDamage = StartCoroutine(WindDamage(e, pushBack));
+        while (lightningDamage != null && windDamage != null)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

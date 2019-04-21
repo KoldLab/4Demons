@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
@@ -17,9 +19,9 @@ public class Turret : MonoBehaviour
     public float damage;
     public float cost;
     public float startTimeBtwShots;
-    public bool closestEnemy = true;
+    public bool closestEnemy = false;
     public bool farthestEnemy = false;
-    public bool firstEnemy = false;
+    public bool firstEnemy = true;
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
@@ -31,7 +33,8 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+      firstEnemy = true;
+
     }
 
     void UpdateTarget()
@@ -113,10 +116,19 @@ public class Turret : MonoBehaviour
         if(enemies.Length > 0)
         {
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(transform.position, range, LayerMask.GetMask("Enemy"));
-
+            Dictionary<float, Collider2D> orderedEnemiesToDamage = enemiesToDamage.ToDictionary(e => e.GetComponent<Enemy>().distanceToEndPoint);
+            var list = orderedEnemiesToDamage.Keys.ToList();
+            list.Sort();
+            Debug.Log("Start");
+            foreach (var key in list)
+            {
+               Debug.Log(key + " : " + orderedEnemiesToDamage[key]);
+            }
+            Debug.Log("End");
             if (enemiesToDamage.Length > 0)
             {
-                target = enemiesToDamage[0].transform;
+                Debug.Log("Target is " + orderedEnemiesToDamage.First().Value.name);
+                target = orderedEnemiesToDamage.Last().Value.transform;
             }
         }
         

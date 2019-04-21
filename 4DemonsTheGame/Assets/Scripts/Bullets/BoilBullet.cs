@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoilBullet : MonoBehaviour
+public class BoilBullet : AbstractBullet
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Special bullet Attribute")]
+    public int slow;
 
-    // Update is called once per frame
-    void Update()
+
+    public override IEnumerator bulletSpecialDamage(float damage)
     {
-        
+        Enemy e = target.GetComponent<Enemy>();
+        e.TakeDamage(damage);
+
+        Coroutine fireDamage = StartCoroutine(FireDamage(e, damage));
+        Coroutine waterDamage = StartCoroutine(WaterDamage(e, slow));
+        while (fireDamage != null && waterDamage != null)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

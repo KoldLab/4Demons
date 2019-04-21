@@ -110,12 +110,12 @@ public abstract class AbstractBullet : MonoBehaviour
 
     public IEnumerator LightningDamage(Enemy _enemy, float _stunnedTime)
     {
-        float originalSpeed = _enemy.speed;
 
         if (_enemy == null)
         {
             yield break;
         }
+        else { }
         _enemy.speed = 0;
 
         yield return new WaitForSecondsRealtime(_stunnedTime);
@@ -124,7 +124,8 @@ public abstract class AbstractBullet : MonoBehaviour
         {
             yield break;
         }
-        _enemy.speed = originalSpeed;
+        else
+        _enemy.speed = _enemy.originalSpeed;
     }
 
     public void EarthDamage(Enemy _enemy, float damage, IEnumerator couroutine = null)

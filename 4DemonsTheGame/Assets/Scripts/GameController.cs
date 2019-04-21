@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public Transform spawnPoint;
 
     public Player player;
+    public TimeControl timeController;
     public CameraController cam;
     public GameObject demon;
 
@@ -22,7 +23,7 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        //each time we start the game there's only one buildmanager and this variable can be accessed by anywhere
+        //each time we start the game there's only one GameManager and this variable can be accessed by anywhere
         if (instance != null)
         {
             Debug.LogError("More than one GameController in scene");
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         player = Player.Instance;
+        timeController = TimeControl.instance;
         GameIsOver = false;
         demon = (GameObject)Instantiate(demon, new Vector2(spawnPoint.position.x, spawnPoint.position.y), spawnPoint.rotation);
         demon.name = "Demon";
@@ -44,7 +46,7 @@ public class GameController : MonoBehaviour
     {
         for (; ; )
         {
-            player.Save(player.currentSavedFile);            
+            player.Save(player.currentSavedFile);            //sauvegarde toute les 5 secondtes
             yield return new WaitForSecondsRealtime(5f);
         }
         
@@ -83,12 +85,12 @@ public class GameController : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;
+        timeController.Pause();
     }
 
     public void Resume()
     {
-        Time.timeScale = 1;
+        timeController.Resume();
     }
 
     public void WinLevel()

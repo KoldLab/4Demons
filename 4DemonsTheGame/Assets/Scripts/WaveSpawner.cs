@@ -9,6 +9,7 @@ public class WaveSpawner : MonoBehaviour
 {
     public static int EnemiesLeft;
     public static int NumberOfRounds;
+    public int enemyNumber = 0;
 
     public Wave[] waves;
 
@@ -114,8 +115,9 @@ public class WaveSpawner : MonoBehaviour
 
         void SpawnEnemy(GameObject enemy)
         {
-            Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-
+            var clone = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        clone.name = "Enemy " + enemyNumber;
+        enemyNumber++;
         }
     
 }

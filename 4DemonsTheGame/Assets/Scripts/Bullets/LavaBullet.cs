@@ -8,8 +8,8 @@ public class LavaBullet : AbstractBullet
     {
         Enemy e = target.GetComponent<Enemy>();
         LavaDamage(e, damage);
+        yield return new WaitForSeconds(1f); //wait for the burned time
         Destroy(gameObject);
-        yield return null;
     }
 
     public void LavaDamage(Enemy _enemy, float damage)
