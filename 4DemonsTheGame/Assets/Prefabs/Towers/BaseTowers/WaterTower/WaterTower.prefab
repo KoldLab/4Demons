@@ -101,8 +101,8 @@ MonoBehaviour:
   cost: 75
   startTimeBtwShots: 1
   closestEnemy: 0
-  farthestEnemy: 0
-  firstEnemy: 1
+  farthestEnemy: 1
+  firstEnemy: 0
   enemyTag: Enemy
   bulletPrefab: {fileID: 4387356389300259439, guid: e326465eaf714ed4fa559c11babd7cb8,
     type: 3}

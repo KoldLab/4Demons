@@ -16,7 +16,6 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemy.isKnockedBack = false;
         enemy.isAfterPlayer = false;
         enemy = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody2D>();

@@ -17,8 +17,6 @@ public class Enemy : MonoBehaviour
 
     [Space]
     [Header("Enemy Status :")]
-    public Status enemyStatus;
-    public bool isKnockedBack;
     public bool isAfterPlayer;
     public GameObject player;
     public bool canAttack = false;
@@ -32,7 +30,6 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     private float startingHp;
     private bool isDead = false;
-    public enum Status {Normal, Burned, PushedBack, Slowed, Stunned, Scorched, LightningFire, Lava, Boil, Swift, Sand, Ice, Explosion, Storm, Wood }
     private bool isCoroutineExecuting = false;
     public GameObject blood;
     

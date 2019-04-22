@@ -8,7 +8,6 @@ public abstract class AbstractBullet : MonoBehaviour
     [Space]
     [Header("Attributes")]
     public float explosionRadius;
-    public float rotationSpeed = 1000;
     public float speed = 10;
     public Type bulletType;
     public Effect bulletEffect;
@@ -128,7 +127,7 @@ public abstract class AbstractBullet : MonoBehaviour
         _enemy.speed = _enemy.originalSpeed;
     }
 
-    public void EarthDamage(Enemy _enemy, float damage, IEnumerator couroutine = null)
+    public void EarthDamage(Enemy _enemy, float damage, IEnumerator coroutine = null)
     {
         Vector2 center = new Vector3(
                     (transform.position.x),
@@ -140,7 +139,7 @@ public abstract class AbstractBullet : MonoBehaviour
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);
-            StartCoroutine(couroutine);
+            StartCoroutine(coroutine);
         }
     }
 
