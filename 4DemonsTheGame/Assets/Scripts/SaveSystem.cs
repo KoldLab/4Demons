@@ -26,7 +26,6 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/" + savedFile + ".sav"; // we are going to search the data where we saved it
         if (File.Exists(path)) // we look if the path exist
         {
-            Debug.Log("File exists");
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open); // we want to open the file so we can read it 
 

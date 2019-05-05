@@ -2748,8 +2748,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: This is your towers, each towers can be bought from the shop ( top right
-    ), upgraded, combined and sold.
+  m_text: This is your towers, each towers can be bought from the shop (appears when
+    you click on a node, upgraded, combined and sold.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 35c0f1208bd67c142bed46f734ebadfd, type: 2}
   m_sharedMaterial: {fileID: 21204035118787316, guid: 35c0f1208bd67c142bed46f734ebadfd,
@@ -2831,7 +2831,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

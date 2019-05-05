@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
         //If instance is already set and this script is not it, then destroy it.
         //We already have a MyClass in this instance.
         if (_instance != null && _instance != this)
-            Debug.Log("destroyy");
             Destroy(gameObject);
         _instance = this;
         DontDestroyOnLoad(this);
@@ -32,7 +31,6 @@ public class Player : MonoBehaviour
 
     public void Save(string savedFile)
     {
-        Debug.Log("Game saved to :" + currentSavedFile);
         SaveSystem.SavePlayer(_instance, savedFile);
     }
     public void Load(string savedFile)
