@@ -1,7 +1,6 @@
-"# 4Demons"
+# 4Demons
 
 Play the game
-
 ======
 
 At the moment, the game is playable via the website I made for my school project.
