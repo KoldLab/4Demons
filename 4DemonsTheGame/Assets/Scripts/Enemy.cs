@@ -3,55 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
 
     [Header("Enemy attributes :")]
-    public float speed = 5.0f;
-    public float originalSpeed;
     public int souls = 10;
-    public float hp = 100;
-    public float damage;
-    public float attackRange;
-    public float attackSpeed;
 
     [Space]
     [Header("Enemy Status :")]
     public bool isAfterPlayer;
     public GameObject player;
     public bool canAttack = false;
-    public float timeBtwAttack;
     public float distanceToEndPoint;
 
     [Space]
     [Header("Unity Stuff :")]
     public GameObject enemyParticles;
-    public Image hpBar;
     public Animator anim;
-    private float startingHp;
-    private bool isDead = false;
-    private bool isCoroutineExecuting = false;
-    public GameObject blood;
+
     
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         originalSpeed = speed;
         timeBtwAttack = 1 / attackSpeed;
-        startingHp = hp;
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         anim = GetComponent<Animator>();
+        base.Start();
     }
 
-    public void TakeDamage(float amount)
+    public override void TakeDamage(float amount)
     {
-        hp -= amount;
-        GameObject _blood = (GameObject)Instantiate(blood, transform.position, transform.rotation);
-        Destroy(_blood, 2);
-        hpBar.fillAmount = hp/startingHp;
+        base.TakeDamage(amount);
 
-        if (hp <= 0 && !isDead)
+        if (healthPoints <= 0 && !isDead)
         {
             Die();
         }

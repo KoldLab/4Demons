@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1405a8252bcb0d499e51ede3e414fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  demon: {fileID: 1546150991393190053}
   movementDirection: {x: 0, y: 0}
   movementSpeed: 0
 --- !u!114 &1546150991393190053
@@ -271,21 +271,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea6dbaf3eafca741902e2848a11444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 100
+  defense: 0
+  hpRegenBy2Seconds: 1
+  speed: 3
+  originalSpeed: 0
+  damage: 30
+  attackSpeed: 3
+  attackRange: 0.75
+  timeBtwAttack: 0
+  hpBar: {fileID: 5307412288835163257}
+  blood: {fileID: 1411883530948659776, guid: 685a8202724c6424f889b2fa718e8f2e, type: 3}
+  body: {fileID: 1546150991379582434}
   attackPos: {fileID: 1546150992434961813}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
   attackAnim: {fileID: 1546150991393190055}
   enemyHandled: 0
-  attackSpeed: 3
-  attackRange: 0.75
-  damage: 30
-  healthPoints: 100
   enemyThatDemonCanHandle: 3
-  defense: 0
-  hpRegenBy2Seconds: 1
-  hpBar: {fileID: 5307412288835163257}
-  blood: {fileID: 1411883530948659776, guid: 685a8202724c6424f889b2fa718e8f2e, type: 3}
   isAttacking: 0
 --- !u!61 &1546150991393190050
 BoxCollider2D:

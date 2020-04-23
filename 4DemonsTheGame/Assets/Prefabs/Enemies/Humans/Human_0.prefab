@@ -304,23 +304,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2301a416cb226142875054c0678168a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 100
+  defense: 0
+  hpRegenBy2Seconds: 0
   speed: 2
+  damage: 5
+  attackSpeed: 3
+  attackRange: 0.5
+  timeBtwAttack: 0
+  hpBar: {fileID: 3819952762012076563}
+  blood: {fileID: 1411883530948659776, guid: 685a8202724c6424f889b2fa718e8f2e, type: 3}
+  originalSpeed: 0
   souls: 5
   hp: 100
-  damage: 5
-  attackRange: 0.5
-  attackSpeed: 3
-  enemyStatus: 0
-  isKnockedBack: 0
   isAfterPlayer: 0
   player: {fileID: 0}
   canAttack: 0
-  timeBtwAttack: 0
+  distanceToEndPoint: 0
   enemyParticles: {fileID: 2384056106045530226, guid: c46785943f8e06f47b7830806df9d52d,
     type: 3}
-  hpBar: {fileID: 3819952762012076563}
   anim: {fileID: 0}
-  blood: {fileID: 1411883530948659776, guid: 685a8202724c6424f889b2fa718e8f2e, type: 3}
 --- !u!114 &153380610325726420
 MonoBehaviour:
   m_ObjectHideFlags: 0

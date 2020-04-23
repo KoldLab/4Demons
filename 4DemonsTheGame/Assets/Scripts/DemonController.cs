@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DemonController : MonoBehaviour
 {
-    [Header("Character attributes:")]
-    public float speed;
+    public Demon demon;
 
     [Space]
     [Header("Character statistics:")]
@@ -47,7 +46,7 @@ public class DemonController : MonoBehaviour
         }
         else
         {
-            rb.velocity = movementDirection * movementSpeed * speed;
+            rb.velocity = movementDirection * movementSpeed * demon.speed;
             Animate();
         }
         

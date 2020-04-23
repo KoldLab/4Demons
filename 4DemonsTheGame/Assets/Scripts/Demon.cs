@@ -3,42 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Demon : MonoBehaviour
+public class Demon : Character
 {    
     public Transform attackPos;
     public LayerMask whatIsEnemies;
     public Animator attackAnim;
     [Space]
     [Header("Demon status :")]
-    public static bool IsDead;
     public int enemyHandled;
-    private float timeBtwAttack;
-    [Space]
-    [Header("Demon attributes :")]
-    public float attackSpeed;
-    public float attackRange;
-    public int damage;
-    public float healthPoints;
     public int enemyThatDemonCanHandle = 3;
-    public float defense;
-    public float hpRegenBy2Seconds;
+    [Space]
+    [Header("Demon level system :")]
+
+
     [Space]
     [Header("Unity Stuff :")]   
-    public Image hpBar;
-    private float startingHp;
-    private bool isCoroutineExecuting = false;
-    public GameObject blood;
     public bool isAttacking = false;
 
 
 
+
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         enemyHandled = 0;
-        IsDead = false;
-        startingHp = healthPoints;
         attackAnim.SetFloat("attackSpeed", attackSpeed);
+        base.Start();
     }
 
     // Update is called once per frame
@@ -86,19 +76,6 @@ public class Demon : MonoBehaviour
         isAttacking = false;
         isCoroutineExecuting = false;
         timeBtwAttack = 0;
-    }
-
-    public void TakeDamage(float damage)
-    {
-        float realDamage = damage - defense;
-        if(realDamage < 0)
-        {
-            realDamage = 0;
-        }
-        healthPoints -= realDamage;
-        GameObject _blood = (GameObject)Instantiate(blood, transform.position, transform.rotation);
-        Destroy(_blood, 2);
-        hpBar.fillAmount = healthPoints / startingHp;
     }
 
     public void Regenaration()
