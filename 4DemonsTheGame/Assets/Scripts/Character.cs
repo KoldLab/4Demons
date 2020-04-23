@@ -48,7 +48,7 @@ public class Character : MonoBehaviour
         
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual bool TakeDamage(float damage)
     {
         float realDamage = damage - defense;
         if (realDamage < 0)
@@ -59,5 +59,13 @@ public class Character : MonoBehaviour
         GameObject _blood = (GameObject)Instantiate(blood, transform.position, transform.rotation);
         Destroy(_blood, 2);
         hpBar.fillAmount = healthPoints / startingHp;
+        if(healthPoints <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

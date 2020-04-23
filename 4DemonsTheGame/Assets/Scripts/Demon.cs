@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Demon : Character
 {    
     public Transform attackPos;
     public LayerMask whatIsEnemies;
     public Animator attackAnim;
+    public LevelSystem levelSystem = new LevelSystem();
+
     [Space]
     [Header("Demon status :")]
     public int enemyHandled;
     public int enemyThatDemonCanHandle = 3;
-    [Space]
-    [Header("Demon level system :")]
-
 
     [Space]
-    [Header("Unity Stuff :")]   
+    [Header("Demon level :")]
+    public int level;
+
+    [Space]
+    [Header("Unity Stuff :")]
+    public Image xPBar;
     public bool isAttacking = false;
 
 
@@ -28,6 +33,7 @@ public class Demon : Character
     {
         enemyHandled = 0;
         attackAnim.SetFloat("attackSpeed", attackSpeed);
+        xPBar.fillAmount = levelSystem.GetExperienceNumber() / levelSystem.GetExperienceToNextLevel();
         base.Start();
     }
 
@@ -68,8 +74,12 @@ public class Demon : Character
         isAttacking = true;
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
         for (int i = 0; i < enemiesToDamage.Length; i++)
-        {           
-           enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage);                            
+        {
+            if (enemiesToDamage[i].GetComponentInParent<Enemy>().TakeDamage(damage))
+            {
+                levelSystem.AddExperience(enemiesToDamage[i].GetComponentInParent<Enemy>().xp);
+                xPBar.fillAmount = (float)levelSystem.GetExperienceNumber() / (float)levelSystem.GetExperienceToNextLevel();
+            }
         }
         
         yield return new WaitForSeconds(startTimeBtwAttack);

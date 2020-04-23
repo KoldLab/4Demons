@@ -8,6 +8,7 @@ public class Enemy : Character
 
     [Header("Enemy attributes :")]
     public int souls = 10;
+    public int xp = 5;
 
     [Space]
     [Header("Enemy Status :")]
@@ -33,14 +34,14 @@ public class Enemy : Character
         base.Start();
     }
 
-    public override void TakeDamage(float amount)
+    public override bool TakeDamage(float amount)
     {
-        base.TakeDamage(amount);
-
-        if (healthPoints <= 0 && !isDead)
+        if (base.TakeDamage(amount) && !isDead)
         {
             Die();
+            return true;
         }
+        return false;
     }
 
     IEnumerator Attack()
@@ -54,7 +55,6 @@ public class Enemy : Character
         yield return new WaitForSeconds(1/attackSpeed);
         player.GetComponent<Demon>().TakeDamage(damage);
         timeBtwAttack = 1 / attackSpeed;          
-        Debug.Log("Enemy Attack!");
         canAttack = false;
         isCoroutineExecuting = false;
     }
